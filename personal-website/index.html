@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="nav.css">
+  <link rel="stylesheet" href="home.css">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,7 +18,7 @@
 
   <nav>
 
-    <a class="page-links selected" href="index.html">
+    <a class="page-links selected name" href="index.html">
       Anya Aven
     </a>
     <a class="page-links" href="about-me.html">
@@ -35,10 +37,37 @@
       Contact
     </a>
 
+
+  <a class="hamburger name" href="#menu">
+    <span class="material-icons">
+      <!-- https://icons8.com/icon/qBlNlefkEJPq/home -->
+      <img src="/personal-website/icons/menu.svg" alt="Home">
+    </span>
+  </a>
+
   </nav>
 
-  <div id="main">
+  <div class="menu-link-container">
+    <ul class="menu" id="menu">
 
+      <a class="close" href="#">
+        <!-- https://icons8.com/icon/4MBC7gtaoPlW/close-->
+        <img src="/personal-website/icons/close.svg" alt="Close">
+      </a>
+
+      <li><a href="#">About Me</a></li>
+      <li><a href="#">Software</a></li>
+      <li><a href="#">Art</a></li>
+      <li><a href="#">Music</a></li>
+      <li><a href="#">Contact</a></li>
+
+
+    </ul>
+  </div>
+
+
+
+  <div id="main">
 
     <div class="headline-wrapper">
 
@@ -54,34 +83,127 @@
 
       </div>
 
-      <img class="profile-pic" src="images/square-pink-profile.jpg" alt="Anya Aven's profile picture">
+      <img class="profile-pic"
+      src="images/square-pink-profile.jpg"
+      alt="Anya Aven's profile picture">
 
     </div>
 
-    <div class="products box background">
+    <div class="box background">
+      <div class="grid-products">
+        <section class="product-item" id="about-intro-info">
+          <h1 class="headline-text">
+            Who am I?
+          </h1>
 
-      <section class="product-item">
-        <h1 class="headline-text">
-          Learner
-        </h1>
+          <p> I am someone who enjoys life to it's fullest! <br>
+            Adventurous, curious, and passionate. <br>
+            I enjoy creative endeavors that bring meaningful impacts to people's lives. <br>
+            Creating supportive communities is a large part of my work. <br>
+          </p>
 
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi velit
-        , nulla, minus amet omnis cupiditate fugiat quae blanditiis
-        dolorum delectus labore quis! Ut numquam iure dolorem perferendis
-        aspernatur et dicta?
-      </section>
+          <p>I bring ideas to life with
+            <a class="page-links" href="software.html">software</a>,
+            <a class="page-links" href="art.html">art</a>,
+            <a class="page-links" href="music.html">music</a>
+            <br>
+            <a class="page-links" href="about-me.html">Wanna know more?</a></p>
 
-      <section class="product-item">
-        <h1 class="headline-text">
-          Learner
+        </section>
 
-        </h1>
+        <section class="product-item" id="software-intro-info">
+          <h1 class="headline-text">
+            Software
+          </h1>
 
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Nemo minima reiciendis nobis aspernatur quisquam? Officia,
-        quos necessitatibus nemo, officiis odit, inventore minus
-        consectetur tenetur aliquid explicabo nesciunt voluptatum earum.
-      </section>
+          <p>
+            I started my coding journey in 2023.
+            Advent of Code was my hook that brought tons of joy
+            solving each new puzzle. <br>
+            I couldn't wait to learn more and bring more solutions to life...
+
+            <a class="page-links" href="software.html">read more</a>
+          </p>
+
+        </section>
+
+        <section class="product-item" id="art-intro-info">
+          <h1 class="headline-text">
+            Art
+          </h1>
+          <p>
+            My favorite color as a kid was black.
+            That might seem sad, right? In reality, my favorite color was black
+            because it was the combination of all the colors. <br>
+            I was not the kid to paint rainbows, I instead painted black...
+
+            <a class="page-links" href="art.html">read more</a>
+          </p>
+
+        </section>
+
+        <section class="product-item" id="music-intro-info">
+          <h1 class="headline-text">
+            Music
+          </h1>
+          <p>
+
+            I started teaching in 2011. Some of my favorite students were
+            the troubled adolescents that came from tough backgrounds.
+            Music gave a voice to those children that felt unheard
+            and who were too shy to speak...
+
+            <a class="page-links" href="music.html">read more</a>
+          </p>
+
+        </section>
+
+        <section class="product-item" id="values-intro-info">
+          <h1 class="headline-text">
+            Values
+
+          </h1>
+          <ul class="values">
+            <li>Making A Difference</li>
+            <li>Community</li>
+            <li>Teamwork</li>
+            <li>Reliability</li>
+            <li>Honesty</li>
+            <li>Curiosity</li>
+            <li>Creativity</li>
+            <li>Intelligence</li>
+            <li>Understanding</li>
+            <li>Timeliness</li>
+            <li>Self-actualization</li>
+          </ul>
+
+          <a href="#more-values">More Values</a>
+
+          <ul class="more values" id="more-values">
+            <li>Helping Society</li>
+            <li>Leadership</li>
+            <li>Teamwork</li>
+            <li>Accountability</li>
+            <li>Effectiveness</li>
+            <li>Effieciency</li>
+            <li>Empathy</li>
+            <li>Enjoyment</li>
+            <li>Exploration</li>
+            <li>Hard Work</li>
+            <li>Gratitude</li>
+            <li>Growth</li>
+            <li>Inquesitiveness</li>
+            <li>Self-Control</li>
+            <li>Dependability</li>
+            <li>Determination</li>
+            <li>Thoughtfulness</li>
+            <li>Mastery</li>
+            <li>Friends</li>
+
+          </ul>
+        </section>
+
+      </div>
 
 
     </div>

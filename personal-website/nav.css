@@ -1,0 +1,34 @@
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+
+  box-shadow: 0px 10px 10px lightblue;
+  background-image: var(--linearPrimaryAccent);
+}
+
+
+nav > .page-links {
+  flex: 1;
+  padding: 2rem;
+  margin: 20px 15px;
+  border-radius: 15px 50px;
+  color: inherit;
+  text-decoration: none;
+  font-size: 1.4em;
+
+  background-color: var(--darkerBlue);
+
+  &:hover {
+    transform: translateY(-10px);
+    transition: all 0.3s ease-in-out;
+    box-shadow: 5px 10px rgba(252, 232, 241, 20);
+
+    background: var(--linearPink);
+  }
+
+  &.selected {
+    background: var(--linearPink);
+
+  }
+}

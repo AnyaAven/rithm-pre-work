@@ -42,7 +42,7 @@ A few (*or more!*) things that I am deeply passionate about and enjoy:
 
 ## 4. What am I great at?
 I am great at **_connecting_** with people from all walks of life. \
-    I have lived a very unique life that has led me to have many valuable perspectives. I love to learn other people's perspectives and reflect on them as well.
+    I have lived a unique life that has led me to have many valuable perspectives. I love to learn other people's perspectives and reflect on them as well.
 
 By being curious about others I have been able to be more _empathetic_, understand the _vulnerability_ it takes to be _brave_, and how to communicate better.
 
