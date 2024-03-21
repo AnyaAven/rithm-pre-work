@@ -44,16 +44,16 @@ body {
 .box {
   /* https://css-generators.com/wavy-shapes/ */
   --mask:
-    radial-gradient(53.65px at 50% 75.85px,#000 99%,#0000 101%) calc(50% - 74px) 0/148px 51% repeat-x,
-    radial-gradient(53.65px at 50% -38.85px,#0000 99%,#000 101%) 50% 37px/148px calc(51% - 37px) repeat-x,
-    radial-gradient(53.65px at 50% calc(100% - 75.85px),#000 99%,#0000 101%) 50% 100%/148px 51% repeat-x,
-    radial-gradient(53.65px at 50% calc(100% + 38.85px),#0000 99%,#000 101%) calc(50% - 74px) calc(100% - 37px)/148px calc(51% - 37px) repeat-x;
+    radial-gradient(53.65px at 50% 75.85px, #000 99%, #0000 101%) calc(50% - 74px) 0/148px 51% repeat-x,
+    radial-gradient(53.65px at 50% -38.85px, #0000 99%, #000 101%) 50% 37px/148px calc(51% - 37px) repeat-x,
+    radial-gradient(53.65px at 50% calc(100% - 75.85px), #000 99%, #0000 101%) 50% 100%/148px 51% repeat-x,
+    radial-gradient(53.65px at 50% calc(100% + 38.85px), #0000 99%, #000 101%) calc(50% - 74px) calc(100% - 37px)/148px calc(51% - 37px) repeat-x;
   -webkit-mask: var(--mask);
-          mask: var(--mask);
+  mask: var(--mask);
 }
 
 .background {
-  padding: 90px;
+  padding: 90px 0px;
 
   background-image: var(--blueCornerGradient);
 }
@@ -96,7 +96,7 @@ body {
 
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 980px) {
   #introduction-text {
     font-size: 2em;
   }
@@ -120,8 +120,8 @@ body {
 
   &.small {
 
-  max-height: 200px;
-  min-height: 20px;
+    max-height: 200px;
+    min-height: 20px;
   }
 
 }
@@ -150,15 +150,18 @@ body {
     margin: 0px 0px 40px 0px;
     font-size: 4rem;
 
+    white-space: nowrap;
   }
 }
+
+
 
 .grid-products {
   display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 2 fr repeat(3, 1fr);
 
-  margin: 20px 8em;
+  margin: 20px 8vw;
   row-gap: 2em;
   column-gap: 8em;
 
@@ -168,6 +171,7 @@ body {
     "art values"
     "music values"
   ;
+
 
   & #values-intro-info {
     grid-area: values;
@@ -212,6 +216,7 @@ body {
     font-size: 1.4rem;
     background: var(--blue400);
 
+    width: inherit;
 
     & span {
       font-size: 4rem;
@@ -221,6 +226,8 @@ body {
   & h1 {
     margin: 0px 0px 10px 0px;
     font-size: 3rem;
+
+    white-space: nowrap;
   }
 
   & p {
@@ -228,14 +235,12 @@ body {
   }
 }
 
-
 .blog {
   font-size: 2rem;
   margin: 180px 40px;
 
 
   & .quoted-text {
-
     background: var(--blue400);
     padding: 80px;
     border-radius: 20px;
@@ -247,6 +252,64 @@ body {
   }
 }
 
+
+/* TODO: Fix Values
+  TODO:   fix mobile
+
+*/
+@media screen and (max-width: 1400px) {
+
+  .grid-products {
+
+    margin: 20px 3em;
+    column-gap: 3em;
+
+
+    & .product-item {
+      padding: 20px;
+      font-size: 16px;
+    }
+
+    & h1 {
+      font-size: 2em;
+    }
+
+    & p {
+      font-size: 1em;
+    }
+
+    & #about-intro-info h1 {
+      font-size: 2em;
+
+    }
+
+    & #values-intro-info h1 {
+      font-size: 2em;
+    }
+
+    /* TODO: Fix */
+    & #more-values {
+      font-size: inherit;
+    }
+  }
+
+  .blog {
+    font-size: 1.3rem;
+    margin: 1vw 40px;
+
+
+    & .quoted-text {
+      padding: 80px;
+      border-radius: 20px;
+    }
+
+
+    & q {
+      font-size: 2.6rem;
+    }
+  }
+
+}
 
 footer {
   margin-top: 180px;
