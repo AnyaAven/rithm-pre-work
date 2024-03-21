@@ -210,6 +210,7 @@ body {
     font-size: 1.4rem;
     background: var(--blue400);
 
+
     & span {
       font-size: 4rem;
     }
