@@ -71,7 +71,7 @@ function flipCard(card) {
 /** Flip a card face-down. */
 
 function unFlipCard(card) {
-
+//TODO: the color should be inherited by the current color in CSS
   const color = "grey";
 
   card.style.background = color;

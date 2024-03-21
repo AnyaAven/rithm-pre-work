@@ -70,9 +70,10 @@ body {
 .headline-wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   column-gap: 1vw;
 
+  margin: 4vw;
 }
 
 #introduction-text {
@@ -80,10 +81,13 @@ body {
   flex-direction: column;
   justify-content: space-between;
 
-  min-width: 300px;
-  padding: 10vw;
+  align-self: center;
 
-  font-size: 4em;
+  white-space: nowrap;
+
+  min-width: 300px;
+
+  font-size: 3em;
   font-weight: 800;
 
   & span {
@@ -94,7 +98,7 @@ body {
 
 @media screen and (max-width: 900px) {
   #introduction-text {
-    font-size: 2.5em;
+    font-size: 2em;
   }
 }
 
@@ -110,8 +114,6 @@ body {
   box-shadow: 5px 15px 10px lightblue;
 
 
-  margin-top: 10vw;
-  margin-right: 10vw;
   max-height: 40vw;
   max-width: 40vw;
 
