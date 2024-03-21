@@ -4,8 +4,8 @@
 
 const FOUND_MATCH_WAIT_MSECS = 1000;
 const COLORS = [
-  "red", "blue", "green", "orange", "purple",
-  "red", "blue", "green", "orange", "purple",
+  "red", "blue", "green", "orange", "purple", "pink",
+  "red", "blue", "green", "orange", "purple", "pink",
 ];
 
 const colors = shuffle(COLORS);
@@ -71,7 +71,8 @@ function flipCard(card) {
 /** Flip a card face-down. */
 
 function unFlipCard(card) {
-  const color = "white";
+
+  const color = "grey";
 
   card.style.background = color;
 
