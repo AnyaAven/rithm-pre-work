@@ -10,7 +10,7 @@
   --blue600: hsl(191, 54%, 78%);
   --blue500: hsl(191, 54%, 83%);
   --blue400: hsl(191, 54%, 88%);
-
+  --blue300: hsl(191, 54%, 93%);
 
   --blueCornerGradient: linear-gradient(to bottom right, hsl(191, 56%, 53%), hsl(191, 56%, 33%));
 
@@ -151,6 +151,8 @@ body {
 
     white-space: nowrap;
   }
+
+
 }
 
 .grid-products {
@@ -242,7 +244,7 @@ body {
 
   /* each title */
   & section {
-    background-color: var(--blue700);
+    background-color: var(--blue300);
     border-radius: 20px;
     margin: 20px;
     padding: 1vw;

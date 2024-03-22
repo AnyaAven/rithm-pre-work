@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Anya Aven's Portfolio</title>
+  <title>Anya Aven's About Me</title>
+
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,11 +12,44 @@
     href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/menu.css">
+  <link rel="stylesheet" href="styles/nav.css">
+
 </head>
 
 <body>
+  <nav>
+
+    <a class="page-links name" href="index.html">
+      Anya Aven
+    </a>
+    <a class="page-links" href="about-me.html">
+      About me
+    </a>
+    <a class="page-links selected" href="software.html">
+      Software
+    </a>
+    <a class="page-links" href="art-portfolio.html">
+      Art
+    </a>
+    <a class="page-links" href="music-portfolio.html">
+      Music
+    </a>
+    <a class="page-links" href="contact.html">
+      Contact
+    </a>
+
+
+    <a class="hamburger name" href="#menu">
+      <span class="material-icons">
+        <!-- https://icons8.com/icons/set/menu-->
+        <img src="/personal-website/icons/menu.svg" alt="Home">
+      </span>
+    </a>
+
+  </nav>
+
   <div class="menu-link-container">
     <ul class="menu" id="menu">
 
@@ -24,24 +58,158 @@
         <img src="/personal-website/icons/close.svg" alt="Close">
       </a>
 
-      <li><a href="#">Anya Aven</a></li>
-      <li><a href="#">About Me</a></li>
-      <li><a href="#">Software</a></li>
-      <li><a href="#">Art</a></li>
-      <li><a href="#">Music</a></li>
-      <li><a href="#">Contact</a></li>
+      <a class="page-links" href="about-me.html">About Me</a>
+      <a class="page-links" href="art-portfolio.html">Art</a>
+      <a class="page-links" href="music-portfolio.html">Music</a>
+      <a class="page-links" href="contact.html">Contact</a>
 
 
     </ul>
   </div>
 
 
-  <a class="hamburger" href="#menu">
-    <span class="material-icons">
-      <!-- https://icons8.com/icon/qBlNlefkEJPq/home -->
-      <img src="/personal-website/icons/home.svg" alt="Home">
-    </span>
-  </a>
+  <div id="main">
+
+    <!-- intro -->
+    <header class="headline-wrapper">
+
+      <div id="introduction-text">
+        <header>
+        </header>
+
+      </div>
+
+    </header>
+
+    <!-- Main content -->
+    <div class="box background">
+
+      <!-- My story -->
+      <div class="products titles">
+
+        <section class="product-item">
+
+          <!-- TODO: add more content to the software Journey -->
+          <p>
+            I started my coding journey in 2023.
+            Advent of Code was my hook that brought tons of joy solving
+            each new puzzle. <br>
+            I couldn't wait to learn more and bring more solutions to life.
+          </p>
+        </section>
+
+      </div>
+
+      <!-- Skills -->
+      <div class="headline-wrapper">
+        <div class="products">
+          <section class="product-item">
+            <h1><span class="headline-text titles">Skills</span></h1>
+
+            <div class="titles">
+              <ul>
+                <li>Git and Github for Version Control</li>
+                <li>ERD to diagram database relationships</li>
+                <li>SQL operations for data manipulation and data definition</li>
+                <li>Deploy applications with Heroku and Amazon Web Services</li>
+                <li>Effectively utilize frameworks such as
+                  jQuery, Bootstrap, Flask, and Redux</li>
+                <li>Configure relational databases with Redis and SQL</li>
+                <li>Strategically utilize APIs</li>
+                <li>Architect custom applications using MVC design principles</li>
+              </ul>
+
+
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+
+
+      <!-- My Flows -->
+      <div class="box background">
+        <div class="products">
+
+          <section class="product-item">
+            <h1 class="headline-text">
+              Certificate
+            </h1>
+            <p>
+              Graduation of {R} 37
+            </p>
+
+          </section>
+
+          <section class="product-item">
+            <h1 class="headline-text">
+              Internship
+            </h1>
+            <p>
+              To be determined...
+            </p>
+          </section>
+
+
+        </div>
+
+      </div>
+
+      <!-- Projects -->
+      <div class="headline-wrapper">
+        <div class="products">
+          <section class="product-item">
+            <h1>
+              <span class="headline-text titles">
+                Projects
+              </span>
+            </h1>
+
+            <div class="titles">
+              <section>
+                <h1>
+                  <span class="headline-text titles">
+                    Project #1
+                  </span>
+                </h1>
+                <p>
+                  Lorem ipsum dolor sit amet,
+                  consectetur adipisicing elit.
+                  Debitis, nostrum sit porro obcaecati
+                  eligendi nulla excepturi quas dolor optio sint?
+
+                </p>
+              </section>
+
+              <section>
+                <h1>
+                  <span class="headline-text titles">
+                    Project #2
+                  </span>
+                </h1>
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Tempore, cupiditate. Optio neque dolorum tempora suscipit
+                  impedit consequatur possimus.
+                </p>
+              </section>
+
+
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <footer>
+      &copy Anyamei Studios LLC. Made with ♥
+
+    </footer>
+
 
 </body>
 

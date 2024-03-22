@@ -180,7 +180,7 @@ I joined {Rithm} Secondary Education in 2024 where I studied best practices for:
 
 
 ## Skills:
-Use the command line and shortcuts to quickly navigate the terminal
+
 
 Utilize git and Github for version control
 
@@ -195,6 +195,8 @@ Use ERD to diagram database relationships
 Perform SQL operations for data manipulation and data definition
 
 Deploy applications with Heroku and Amazon Web Services
+
+Use the command line and shortcuts to quickly navigate the terminal
 
 Effectively utilize frameworks such as jQuery, Bootstrap, Flask, and Redux
 
