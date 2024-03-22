@@ -53,9 +53,13 @@ body {
 }
 
 .background {
-  padding: 90px 0px;
-
+  padding: 5em 0px;
   background-image: var(--blueCornerGradient);
+}
+
+/* fixes about me page */
+#main-box {
+  padding-top: 0;
 }
 
 #main {
@@ -114,6 +118,7 @@ body {
   box-shadow: 5px 15px 10px lightblue;
 
 
+
   max-height: 40vw;
   max-width: 40vw;
 
@@ -128,28 +133,31 @@ body {
 
 .products {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 2vw;
 
 
   & .product-item {
-
     padding: 2rem;
     border-radius: 20px;
-
 
     background: var(--blue400);
 
     & span {
       font-size: 4rem;
     }
+
   }
 
   & h1 {
-    margin: 0px 0px 40px 0px;
-    font-size: 4rem;
+    margin: 0px 0px 10px 0px;
+    font-size: 3rem;
 
     white-space: nowrap;
+  }
+
+  & p {
+    margin: 0px;
   }
 
 
@@ -241,13 +249,25 @@ body {
   flex-direction: row;
   justify-content: space-around;
 
-
   /* each title */
   & section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     background-color: var(--blue300);
     border-radius: 20px;
-    margin: 20px;
-    padding: 1vw;
+    margin: 0.4em;
+    padding: 2vw;
+
+    & .years:last-child {
+      padding-top: 2vw;
+    }
+
+    & .review {
+      font-size: 2rem;
+    }
+
   }
 }
 
@@ -268,18 +288,65 @@ body {
   }
 }
 
+.art {
+
+  max-height: 38vw;
+  max-width: 38vw;
+
+  &#farkley {
+
+    min-width: 38vw;
+  }
+  &#anyamei-studios {
+    background-color: white;
+  }
+}
+
+
 
 /*
   TODO: Fix it for mobile use
 
 */
+
+/* Medium Sizing */
 @media screen and (max-width: 1400px) {
+
+  .art {
+&#farkley {
+  min-width: 30vw;
+}
+  }
+
+
+  .products {
+
+    .product-item {
+      margin: 1em;
+    }
+
+    /* The headlines of each sectioned area */
+    & h1, .product-item span {
+      font-size: 2rem;
+    }
+  }
+
+  .titles:not(.headline-text) {
+    flex-direction: column;
+  }
+
+  #job-titles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+
 
   .grid-products {
 
     margin: 20px 3em;
     column-gap: 3em;
-
 
     & .product-item {
       padding: 20px;
@@ -317,11 +384,14 @@ body {
     & .quoted-text {
       padding: 80px;
       border-radius: 20px;
+
     }
 
 
     & q {
       font-size: 2.6rem;
+      white-space: nowrap;
+
     }
   }
 

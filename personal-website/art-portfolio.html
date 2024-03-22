@@ -9,14 +9,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/menu.css">
+  <link rel="stylesheet" href="styles/nav.css">
 </head>
 
 <body>
 
   <nav>
 
-    <a class="page-links" href="index.html">
+    <a class="page-links name" href="index.html">
       Anya Aven
     </a>
     <a class="page-links" href="about-me.html">
@@ -35,86 +37,192 @@
       Contact
     </a>
 
+
+    <a class="hamburger name" href="#menu">
+      <span class="material-icons">
+        <!-- https://icons8.com/icons/set/menu-->
+        <img src="/personal-website/icons/menu.svg" alt="Home">
+      </span>
+    </a>
+
   </nav>
+
+  <div class="menu-link-container">
+    <ul class="menu" id="menu">
+
+      <a class="close" href="#">
+        <!-- https://icons8.com/icon/4MBC7gtaoPlW/close-->
+        <img src="/personal-website/icons/close.svg" alt="Close">
+      </a>
+
+      <a class="page-links" href="about-me.html">About Me</a>
+      <a class="page-links" href="software.html">Software</a>
+      <a class="page-links" href="art-portfolio.html">Art</a>
+      <a class="page-links" href="music-portfolio.html">Music</a>
+      <a class="page-links" href="contact.html">Contact</a>
+
+
+    </ul>
+  </div>
+
 
   <div id="main">
 
+    <div class="box background">
 
-   <div class="products box background">
+      <!-- first -->
+      <div class="products box background">
 
-      <section class="product-item">
+        <section class="product-item">
 
-        <img class="art" src="images/teal-trees.jpeg" alt="teal-painting" width="260">
+          <img class="art" src="images/teal-trees.jpeg"
+          alt="teal-painting">
 
-        <h1 class="headline-text">
-          Learner
-        </h1>
+          <h1 class="headline-text">
+            Teal Trees
+          </h1>
 
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi velit
-        , nulla, minus amet omnis cupiditate fugiat quae blanditiis
-        dolorum delectus labore quis! Ut numquam iure dolorem perferendis
-        aspernatur et dicta?
-      </section>
+        </section>
 
-      <section class="product-item">
-        <img class="art" src="images/abstract-flowers.jpeg" alt="abstract-flower-painting" width="260">
+        <section class="product-item">
+          <img class="art" src="images/abstract-flowers.jpeg"
+          alt="abstract-flower-painting">
 
-        <h1 class="headline-text">
-          Learner
+          <h1 class="headline-text">
+            Abstract Flowers
 
-        </h1>
+          </h1>
+        </section>
 
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Nemo minima reiciendis nobis aspernatur quisquam? Officia,
-        quos necessitatibus nemo, officiis odit, inventore minus
-        consectetur tenetur aliquid explicabo nesciunt voluptatum earum.
-      </section>
+      </div>
 
+      <!-- second -->
+      <div class="products box background">
+
+        <section class="product-item">
+
+          <img class="art"
+          id="anyamei-studios"
+          src="images/anyamei-studios.svg"
+          alt="logo for Anyamei Studios LLC" >
+
+          <h1 class="headline-text">
+            Logo for Anyamei Studios
+          </h1>
+
+        </section>
+
+        <section class="product-item">
+          <img class="art"
+          id="farkley"
+          src="images/farkley-logo.svg"
+          alt="Logo for Farkley">
+
+          <h1 class="headline-text">
+            Farkley Logo
+
+          </h1>
+        </section>
+      </div>
+
+      <!-- third -->
+      <div class="products box background">
+
+        <section class="product-item">
+
+          <img class="art"
+          src="images/pencil-tom.jpeg"
+           alt="cat-pencil-drawing">
+
+          <h1 class="headline-text">
+            Tom Cat
+          </h1>
+
+        </section>
+
+        <section class="product-item">
+          <img class="art"
+          src="images/pencil-panda.jpeg"
+          alt="panda-graphic-pencil">
+
+          <h1 class="headline-text">
+            Staying Afloat
+
+          </h1>
+        </section>
+      </div>
+
+      <!-- fifth -->
+      <div class="products box background">
+
+        <section class="product-item">
+
+          <img class="art"
+          src="images/character-bag.jpeg"
+          alt="Cartoon and Video Game characters on a canvas backpack">
+
+          <h1 class="headline-text">
+            Memorable Characters
+          </h1>
+
+        </section>
+
+        <section class="product-item">
+          <img class="art"
+          src="images/kingdom-hearts-shoes.jpeg"
+          alt="Kingdom Hearts characters drawn on Vans shoes">
+
+          <h1 class="headline-text">
+            Kingdom Hearts
+
+          </h1>
+        </section>
+      </div>
+
+      <div class="products box background">
+
+        <section class="product-item">
+
+          <img class="art"
+          src="images/pianos.jpeg"
+          alt="Four piano paintings with florals inside each piano">
+
+          <h1 class="headline-text">
+            Wild Pianos
+          </h1>
+          <!-- TODO: add music "To a wild rose by McDowell" -->
+
+        </section>
+
+        <section class="product-item">
+          <img class="art"
+          src="images/san-fran.jpeg"
+          alt="Painting of 2 people in front of the San Franciso Bridge">
+
+          <h1 class="headline-text">
+            Bridge at San Franciso
+
+          </h1>
+        </section>
+      </div>
 
 
     </div>
-    <div class="products box background">
 
-      <section class="product-item">
-
-        <img class="art" src="images/pencil-tom.jpeg" alt="cat-pencil-drawing" width="260">
-
-        <h1 class="headline-text">
-          Learner
-        </h1>
-
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi velit
-        , nulla, minus amet omnis cupiditate fugiat quae blanditiis
-        dolorum delectus labore quis! Ut numquam iure dolorem perferendis
-        aspernatur et dicta?
-      </section>
-
-      <section class="product-item">
-        <img class="art" id="panda" src="images/pencil-panda.jpeg" alt="panda-graphic-pencil" width="260">
-
-        <h1 class="headline-text">
-          Learner
-
-        </h1>
-
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Nemo minima reiciendis nobis aspernatur quisquam? Officia,
-        quos necessitatibus nemo, officiis odit, inventore minus
-        consectetur tenetur aliquid explicabo nesciunt voluptatum earum.
-      </section>
-
-
-    </div>
 
     <div class="blog">
 
       <article class="quoted-text">
         <q class="headline-text">
-          Make decisions out of hope, not fear.
-        </q> <br>
-        Deciding on new things can be challenging but very rewarding.
-        It can be hard to go out of our comfort zone.
-        Are you ready to take the next step to embrace <i>change</i>?
+          My favorite color as a kid was black.
+        </q>
+        <br>
+        <br>
+        That might seem sad, right? In reality, my favorite color was black
+        because it was the combination of all the colors. <br>
+        I was not the kid to paint rainbows, <br>
+        instead I painted black pages that to me <br>
+        were the best rainbows a girl could ask for.
 
       </article>
 

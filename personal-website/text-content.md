@@ -67,23 +67,27 @@ Community
 
 # ABOUT ME
 ## I am a software developer that enjoys challenging work that creates meaningful impacts.
+I started coding to create unique solutions to large problems.
+            It is a very rewarding and exciting career! In our day-to-day lives,
+            we are impacted by software in dozens of ways.
+            By being a developer I can be a part of the impact of thousands
+            of lives in small and large ways.
+            I am lucky to have found my curiosity at a young age.
+            This helped me propel my coding studies
+            enthusiastically.
 
-Prior to coding I was a piano and art instructor for 14 years at Anyamei Studios LLC.
+            As a dev, there are new things to discover every day.
+            The combination of logic, creativity, and
+            discovery, leads my passion for software and web development!
 
-Teaching kids as young as 3 and as old as 78.
-I enjoy connecting with people from all walks of life.
-Living a life full of adventure and with many valuable perspectives and experiences along the way! <br>
+Prior to coding I was a piano and art instructor for 14 years at my studio, Anyamei Studios LLC.
 
-I am lucky to have found my curiosity at a young age. This helped me propel my self-taught studies with enthusiasm, one of the best traits to learn anything.
-
-Teaching myself piano at the age of 11 and helped others learn too. By age 12 I began getting paid for group and private classes! <br>
-Continuing to learn best teaching practices and business policies. Pursuing music competitions and events.
-
-At 15 years old I was fully committed in my educational career and dedicated 7 days a week to teaching.
-
-Running a studio kept me busy, but during my free time I enjoy going on many planned and spontaneous adventures. In 2021 I planned a solo carcamping roadtrip through 30 states. I improved my photography skills a bunch! <br>
+During my free time I enjoy going on many planned and spontaneous adventures. In 2021 I planned a solo carcamping roadtrip through 30 states. I improved my photography skills a bunch! <br>
 
 Throughout my adventures, I search for connection within myself and others. Gaining new perspectives with each new experience. <br>
+
+
+
 
 I love all things creative. I can spend hours painting, coding, and teaching.
 
@@ -176,7 +180,9 @@ Gone too soon with a life unfinished.
 I started my coding journey in 2023. Advent of Code was my hook that brought tons of joy solving each new puzzle. <br>
 I couldn't wait to learn more and bring more solutions to life.
 
-I joined {Rithm} Secondary Education in 2024 where I studied best practices for: Flask, SQL, React, Redux, JavaScript, Python, CSS, and HTML.
+I joined {Rithm} Secondary Education in 2024 where I studied best practices for: Flask, SQL, React, Redux, Typescript, JavaScript, Python, CSS, and HTML.
+
+
 
 
 ## Skills:
@@ -212,4 +218,43 @@ Full Stack Web Development
 ## Projects
 
 ## Internship
+
+# MUSIC
+
+
+Teaching kids as young as 3 and as old as 78.
+I enjoy connecting with people from all walks of life.
+Living a life full of adventure and with many valuable perspectives and experiences along the way! <br>
+
+I am lucky to have found my curiosity at a young age. This helped me propel my self-taught studies enthusiastically, one of the best traits to learn anything.
+
+Teaching myself piano at the age of 11 and helped others learn too. By age 12 I began getting paid for group and private classes! <br>
+Continuing to learn best teaching practices and business policies. Pursuing music competitions and events.
+
+At 15 years old I was fully committed in my educational career and dedicated 7 days a week to teaching.
+
+
+I am the CEO of Anyamei Studios LLC and have professionally taught private and group piano classes from 2011 to 2024.
+
+During that time I taught close to 400 students, many reaching high success in various music competitions.
+
+Some of my favorite students were the troubled adolescents that came from tough backgrounds. Music gave a voice to those children that felt unheard and who were too shy to speak.
+Helping individuals find their voice through musical expressions.
+
+Each student received a curated curriculum to meet their personal music goals. This allowed for more passionate performers to only play pieces they'd love!
+
+## Music events
+
+   - Students participating in Piano Solos National Federation of Music Clubs achieved an **88% Superior rate** on average including Music Theory tests.
+
+   - Students placed as finalists for Piano Solo Scholarship NFMC and Solo Auditions for Charlotte Piano Teachers Forum.
+
+   ## Titles
+Director of the State Division for Piano and Vocals at North Carolina's Music Teachers Association, a non-profit, since 2022
+
+Judge for the National Federation of Music Clubs since 2019.
+
+I have impacted the Piano Teacher community by having 3 of my students participate in my Music Teacher Program for the young. \
+Each created their own successful music studio.
+
 
