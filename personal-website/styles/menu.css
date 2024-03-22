@@ -8,6 +8,11 @@
     display: flex;
     justify-content: flex-start;
     align-self: flex-start;
+
+    /* Selectes Anya Aven button in the nav */
+    &.page-links {
+      background: var(--linearPink);
+    }
   }
 
 .hamburger {

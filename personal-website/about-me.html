@@ -8,17 +8,20 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+    rel="stylesheet">
 
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/menu.css">
+  <link rel="stylesheet" href="styles/nav.css">
 
-  <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="crater-lake">
-
+<body>
   <nav>
 
-    <a class="page-links" href="index.html">
+    <a class="page-links name" href="index.html">
       Anya Aven
     </a>
     <a class="page-links selected" href="about-me.html">
@@ -37,89 +40,226 @@
       Contact
     </a>
 
+
+    <a class="hamburger name" href="#menu">
+      <span class="material-icons">
+        <!-- https://icons8.com/icons/set/menu-->
+        <img src="/personal-website/icons/menu.svg" alt="Home">
+      </span>
+    </a>
+
   </nav>
 
-  <div class="crater-lake">
+  <div class="menu-link-container">
+    <ul class="menu" id="menu">
 
+      <a class="close" href="#">
+        <!-- https://icons8.com/icon/4MBC7gtaoPlW/close-->
+        <img src="/personal-website/icons/close.svg" alt="Close">
+      </a>
+
+      <a class="page-links" href="about-me.html">About Me</a>
+      <a class="page-links" href="art-portfolio.html">Art</a>
+      <a class="page-links" href="music-portfolio.html">Music</a>
+      <a class="page-links" href="contact.html">Contact</a>
+
+
+    </ul>
   </div>
+
 
   <div id="main">
 
-
+    <!-- intro -->
     <header class="headline-wrapper">
 
       <div id="introduction-text">
         <header>
-          Creating <i>amazing</i> content <br>
-          since <span class="headline-text">June 4th, 1999</span>
+          I am a <span class="headline-text">software developer</span> <br>
+          that enjoys challenging work <br>
+          to create meaningful impacts.
         </header>
-
-        <p>Lorem ipsum dolor sit amet consectetur, <br>
-          adipisicing elit.
-          Obcaecati ratione perferendis
-          itaque cum nisi reiciendis nihil.
-        </p>
-
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum, maiores. Unde ipsam impedit optio ab
-          suscipit obcaecati minus dolor inventore voluptates, ad est porro delectus consequatur, aliquid et, deserunt
-          ducimus?</p>
 
       </div>
 
+      <!-- TODO: change to a different photo -->
       <img class="small profile-pic" src="images/square-pink-profile.jpg" alt="Anya Aven's profile picture">
 
     </header>
 
-    <div class="products">
+    <!-- Main content -->
+    <div class="box background">
 
-      <section class="product-item">
-        <h1 class="headline-text">
-          Learner
-        </h1>
+      <!-- My story -->
+      <div class="products">
 
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eligendi velit
-        , nulla, minus amet omnis cupiditate fugiat quae blanditiis
-        dolorum delectus labore quis! Ut numquam iure dolorem perferendis
-        aspernatur et dicta?
-      </section>
+        <section class="product-item">
 
-      <section class="product-item">
-        <h1 class="headline-text">
-          Learner
+          <p>
+            Prior to coding I was a piano and art instructor
+            for 14 years at Anyamei Studios LLC.
+          </p>
 
-        </h1>
+          <p>
+            Teaching kids as young as 3 and as old as 78.
+            I enjoy connecting with people from all walks of life.
+            Living a life full of adventure and with many valuable
+            perspectives and experiences along the way! <br>
+          </p>
 
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Nemo minima reiciendis nobis aspernatur quisquam? Officia,
-        quos necessitatibus nemo, officiis odit, inventore minus
-        consectetur tenetur aliquid explicabo nesciunt voluptatum earum.
-      </section>
+          <p>I am lucky to have found my curiosity at a young age.
+            This helped me propel my self-taught studies with enthusiasm,
+            one of the best traits to learn anything.</p>
 
+          <p>Teaching myself piano at the age of 11 and helped others learn too.
+            By age 12 I began getting paid for
+            group and private classes! <br>
+            Continuing to learn best teaching practices and business policies.
+            Pursuing music competitions and events.
+          </p>
+
+          <p>
+            At 15 years old I was fully committed in my educational career and
+            dedicated 7 days a week to teaching.
+          </p>
+
+          <p>Running a studio kept me busy, but during my free time I enjoy going
+            on many planned and spontaneous
+            adventures. In 2021 I planned a solo carcamping roadtrip through 30 states.
+            I improved my photography skills
+            a bunch! <br></p>
+
+          <p>Throughout my adventures, I search for connection within myself and others.
+            Gaining new perspectives with each new experience. <br>
+          </p>
+
+        </section>
+
+
+      </div>
+
+
+      <!-- My titles held-->
+      <div class="headline-wrapper">
+        <div class="products">
+          <section class="product-item">
+            <h1><span class="headline-text titles">Titles</span></h1>
+
+            <div class="titles">
+              <section>
+                CEO of Anyamei Studios LLC
+                <p class="years">2011 - 2024</p>
+              </section>
+
+              <section>
+                Adjudicator for the <br>
+                National Federation of Music Clubs
+                <p class="years">2019 - 2024</p>
+              </section>
+
+              <section>
+                Director of the State Division <br>
+                for Piano at <br>
+                North Carolina's Music Teachers Association
+                <p class="years">2022 - 2024</p>
+              </section>
+
+              <section>
+                Peer Leader for Brave Step
+                <p class="years">2023</p>
+              </section>
+
+            </div>
+          </section>
+
+        </div>
+
+      </div>
+
+
+      <!-- My Flows -->
+      <div class="box background">
+        <div class="products">
+
+          <section class="product-item">
+            <h1 class="headline-text">
+              My Flow
+            </h1>
+            <p>
+              I love all things creative. I can spend hours painting, coding, and teaching.
+            </p>
+            <p>Few of my other passions are: puzzles,
+              board games, traveling, deep conversations,
+              and anything involving water.</p>
+
+          </section>
+
+          <section class="product-item">
+            <h1 class="headline-text">
+              Extra Curriculars
+            </h1>
+            <p>
+              Outside of programming I am learning: rowing, more cooking recipes,
+              photography, and digital media.
+            </p>
+          </section>
+
+
+        </div>
+
+      </div>
+
+      <!-- reviews -->
+      <div class="headline-wrapper">
+        <div class="products">
+          <section class="product-item">
+            <h1>
+              <span class="headline-text">
+                What do other's say about me?
+              </span>
+            </h1>
+
+            <div class="titles">
+              <section>
+                <h1>
+                  <span class="headline-text">
+                    Communication
+                  </span>
+                </h1>
+                <p>
+                  Sharing openly about all aspects of life, asking questions of others due to
+                  genuine interest, being an encourager and builder of others self-concept, listening actively
+                  and having empathy; articulating thoughts clearly.
+                </p>
+              </section>
+
+              <section>
+                <h1>
+                  <span class="headline-text">
+                    Brave
+                  </span>
+                </h1>
+                <p>
+                  Being willing to try new things and shift gears in life; seeking knowledge and
+                  craving the chance to learn; demonstrating perseverance through difficult obstacles that
+                  get in the way.
+                </p>
+              </section>
+
+
+            </div>
+          </section>
+
+        </div>
+
+      </div>
 
     </div>
 
-    <div class="blog">
+    <footer>
+      &copy Anyamei Studios LLC. Made with ♥
 
-      <article class="quoted-text">
-        <q class="headline-text">
-          Make decisions out of hope, not fear.
-        </q> <br>
-        Deciding on new things can be challenging but very rewarding.
-        It can be hard to go out of our comfort zone.
-        Are you ready to take the next step to embrace <i>change</i>?
-
-      </article>
-
-
-    </div>
-
-
-  </div>
-
-  <footer>
-    &copy Anyamei Studios LLC. Made with ♥
-
-  </footer>
+    </footer>
 
 
 </body>

@@ -129,9 +129,8 @@ body {
 .products {
   display: flex;
   justify-content: space-between;
-  gap: 180px;
+  gap: 2vw;
 
-  margin-top: 180px;
 
   & .product-item {
 
@@ -153,8 +152,6 @@ body {
     white-space: nowrap;
   }
 }
-
-
 
 .grid-products {
   display: grid;
@@ -209,7 +206,6 @@ body {
     grid-area: music;
   }
 
-
   & .product-item {
     padding: 2rem;
     border-radius: 20px;
@@ -223,6 +219,8 @@ body {
     }
   }
 
+
+
   & h1 {
     margin: 0px 0px 10px 0px;
     font-size: 3rem;
@@ -232,6 +230,22 @@ body {
 
   & p {
     margin: 0px;
+  }
+}
+
+/* TODO: add more styling */
+.titles {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+
+  /* each title */
+  & section {
+    background-color: var(--blue700);
+    border-radius: 20px;
+    margin: 20px;
+    padding: 1vw;
   }
 }
 
@@ -253,8 +267,8 @@ body {
 }
 
 
-/* TODO: Fix Values
-  TODO:   fix mobile
+/*
+  TODO: Fix it for mobile use
 
 */
 @media screen and (max-width: 1400px) {

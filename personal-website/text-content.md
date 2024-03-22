@@ -70,14 +70,14 @@ Community
 
 Prior to coding I was a piano and art instructor for 14 years at Anyamei Studios LLC.
 
+Teaching kids as young as 3 and as old as 78.
 I enjoy connecting with people from all walks of life.
 Living a life full of adventure and with many valuable perspectives and experiences along the way! <br>
-Teaching kids as young as 3 and as old as 78.
 
 I am lucky to have found my curiosity at a young age. This helped me propel my self-taught studies with enthusiasm, one of the best traits to learn anything.
 
-I taught myself piano at the age of 11 and helped others learn too. By age 12 I began getting paid for group and private classes! <br>
-I continued to learn best teaching practices and business policies. Pursuing music competitions and events.
+Teaching myself piano at the age of 11 and helped others learn too. By age 12 I began getting paid for group and private classes! <br>
+Continuing to learn best teaching practices and business policies. Pursuing music competitions and events.
 
 At 15 years old I was fully committed in my educational career and dedicated 7 days a week to teaching.
 
@@ -97,7 +97,7 @@ A few (*or more!*) things that I am deeply passionate about and enjoy:
 - Adjudicator for the National Federation of Music Clubs
 2019 - 2024
 
-- Director of the State Division for Piano and Vocals at North Carolina's Music Teachers Association
+- Director of the State Division for Piano at North Carolina's Music Teachers Association
 2022 - 2024
 
 - Peer Leader for Brave Step
