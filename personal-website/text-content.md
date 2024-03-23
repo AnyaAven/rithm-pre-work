@@ -222,6 +222,8 @@ Full Stack Web Development
 # MUSIC
 
 
+I am the CEO of Anyamei Studios LLC and have professionally taught private and group piano classes from 2011 to 2024.
+
 Teaching kids as young as 3 and as old as 78.
 I enjoy connecting with people from all walks of life.
 Living a life full of adventure and with many valuable perspectives and experiences along the way! <br>
@@ -233,8 +235,6 @@ Continuing to learn best teaching practices and business policies. Pursuing musi
 
 At 15 years old I was fully committed in my educational career and dedicated 7 days a week to teaching.
 
-
-I am the CEO of Anyamei Studios LLC and have professionally taught private and group piano classes from 2011 to 2024.
 
 During that time I taught close to 400 students, many reaching high success in various music competitions.
 

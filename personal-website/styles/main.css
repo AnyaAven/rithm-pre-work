@@ -3,7 +3,8 @@
   --text: hsl(192, 81%, 6%);
   --background: hsl(198, 88%, 93%);
   --darkerBlue: hsl(191, 56%, 53%);
-  --pink900: hsl(332, 79%, 85%);
+  --pink900: hsl(332, 79%, 83%);
+  --pink300: hsl(332, 79%, 85%);
   --blue900: hsl(191, 54%, 63%);
   --blue800: hsl(191, 54%, 68%);
   --blue700: hsl(191, 54%, 73%);
@@ -297,9 +298,37 @@ body {
 
     min-width: 38vw;
   }
+
   &#anyamei-studios {
     background-color: white;
   }
+}
+
+.social-links {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  padding: 0;
+
+  fill: white;
+}
+
+#github {
+  max-width: 40px;
+  max-height: 40px;
+}
+
+.languages-frameworks-list {
+  display: flex;
+  justify-content: space-around;
+
+  & li {
+    list-style-type: none;
+    margin: 0 1vw;
+  }
+
+  padding: 0;
+
 }
 
 
@@ -313,10 +342,11 @@ body {
 @media screen and (max-width: 1400px) {
 
   .art {
-&#farkley {
-  min-width: 30vw;
-}
+    &#farkley {
+      min-width: 30vw;
+    }
   }
+
 
 
   .products {
@@ -326,7 +356,8 @@ body {
     }
 
     /* The headlines of each sectioned area */
-    & h1, .product-item span {
+    & h1,
+    .product-item span {
       font-size: 2rem;
     }
   }
@@ -390,8 +421,6 @@ body {
 
     & q {
       font-size: 2.6rem;
-      white-space: nowrap;
-
     }
   }
 
