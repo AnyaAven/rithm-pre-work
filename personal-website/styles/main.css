@@ -90,6 +90,7 @@ a {
 }
 
 #introduction-text {
+  z-index: 1;
 
   text-align: center;
   display: flex;
