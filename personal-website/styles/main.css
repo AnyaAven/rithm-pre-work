@@ -140,7 +140,6 @@ a {
   display: flex;
   flex-direction: row;
 
-  /* TODO: i want to align for the software page though */
   align-items: center;
   justify-content: space-around;
   gap: 2vw;
