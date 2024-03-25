@@ -5,6 +5,7 @@
   }
 }
 
+/* no font-size changes */
 @media (max-width: 1280px) {
 
   .art {
@@ -18,11 +19,6 @@
     .product-item {
       margin: 1em;
     }
-
-    /* The headlines of each sectioned area */
-    & h1, .product-item span {
-      font-size: 2rem;
-    }
   }
 
   .titles:not(.headline-text) {
@@ -35,7 +31,7 @@
     grid-template-rows: 1fr 1fr;
   }
 
-  .grid-products {
+  .grid.products {
 
     margin: 20px 3em;
     column-gap: 3em;
@@ -48,19 +44,11 @@
   }
 
   .blog {
-    font-size: 1.3rem;
     margin: 1vw 40px;
-
 
     & .quoted-text {
       padding: 80px;
       border-radius: 20px;
-
-    }
-
-
-    & q {
-      font-size: 2.6rem;
     }
   }
 
@@ -104,19 +92,23 @@
     font-size: 2.5rem;
   }
 
+  .headline-text {
+    font-size: 3.0rem;
+  }
+
+  .products .product-item {
+    font-size: 1.6em;
+  }
+
   .social-links .icon {
     width: 54px;
     height: 54px;
   }
 
-  .grid-products {
+  .grid.products {
     display: flex;
     flex-direction: column;
     margin: 20px 1em;
-
-    & .product-item {
-      font-size: 1rem;
-    }
   }
 }
 
@@ -134,15 +126,20 @@
   #introduction-text {
     font-size: 2rem;
   }
+  .headline-text {
+    font-size: 2.6rem;
+  }
 
   .profile-pic {
     margin-bottom: 1em;
   }
-
-
 }
 
 @media (max-width: 640px) {
+
+  .headline-text {
+    font-size: 1.6rem;
+  }
 
   .blog {
     & .quoted-text {

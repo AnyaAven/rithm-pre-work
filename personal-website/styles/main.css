@@ -87,13 +87,11 @@ a {
   margin: 4vw;
 
   align-items: center;
-
-    & #introduction-text {
-      text-align: center;
-    }
 }
 
 #introduction-text {
+
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -104,18 +102,20 @@ a {
 
   min-width: 300px;
 
-  font-size: 3rem;
+  font-size: 3.6rem;
   font-weight: 800;
 
   & span {
     font-style: italic;
+    color: var(--pink900);
   }
 
 }
 
-
 .headline-text {
-  color: var(--pink900)
+  color: var(--pink900);
+
+  font-size: 3.6rem;
 }
 
 .profile-pic {
@@ -138,7 +138,9 @@ a {
 .products {
   display: flex;
   flex-direction: row;
-  /* align-items: center; */
+
+  /* TODO: i want to align for the software page though */
+  align-items: center;
   justify-content: space-around;
   gap: 2vw;
 
@@ -147,24 +149,26 @@ a {
     border-radius: 20px;
 
     margin-inline: 1em;
-
     background: var(--blue400);
+
+    font-size: 1.6rem;
+
   }
 
   & h1 {
-    margin: 0px 0px 10px 0px;
-    font-size: 3rem;
+    margin: 0 0 10px 0;
 
     white-space: nowrap;
   }
 
   & p {
-    margin: 0px;
+    margin: 0;
   }
 }
 
-.grid-products {
+.grid.products {
   display: grid;
+  align-items: normal;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: auto;
 
@@ -177,30 +181,6 @@ a {
     "software resume"
     "music art"
   ;
-
-  & h1 {
-    margin: 0px 0px 10px 0px;
-    font-size: 3rem;
-
-    white-space: nowrap;
-  }
-
-  & p {
-    margin: 0px;
-  }
-
-  & .product-item {
-    padding: 2rem;
-    border-radius: 20px;
-    font-size: 1.4rem;
-    background: var(--blue400);
-
-    width: inherit;
-
-    & span {
-      font-size: 4rem;
-    }
-  }
 }
 
 #values-intro-info {
@@ -225,9 +205,9 @@ a {
   flex-direction: row;
   justify-content: space-around;
 
-
   /* each title */
   & section {
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -237,9 +217,6 @@ a {
     margin: 0.4em;
     padding: 2vw;
 
-    /* min font size will be 16px */
-    font-size: min(16px);
-
     & .years:last-child {
       padding-top: 2vw;
     }
@@ -248,19 +225,12 @@ a {
 }
 
 .blog {
-  font-size: 2rem;
   margin: 180px 40px;
-
 
   & .quoted-text {
     background: var(--blue400);
     padding: 80px;
     border-radius: 20px;
-  }
-
-
-  & q {
-    font-size: 4rem;
   }
 }
 
