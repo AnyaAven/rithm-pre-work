@@ -1,0 +1,153 @@
+
+@media (max-width: 1700px) {
+  .products.languages-frameworks-wrapper {
+    flex-direction: column-reverse;
+  }
+}
+
+@media (max-width: 1280px) {
+
+  .art {
+    &#farkley {
+      min-width: 30vw;
+    }
+  }
+
+  .products {
+
+    .product-item {
+      margin: 1em;
+    }
+
+    /* The headlines of each sectioned area */
+    & h1, .product-item span {
+      font-size: 2rem;
+    }
+  }
+
+  .titles:not(.headline-text) {
+    flex-direction: column;
+  }
+
+  #job-titles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .grid-products {
+
+    margin: 20px 3em;
+    column-gap: 3em;
+
+    & .product-item {
+      padding: 20px;
+
+    }
+
+  }
+
+  .blog {
+    font-size: 1.3rem;
+    margin: 1vw 40px;
+
+
+    & .quoted-text {
+      padding: 80px;
+      border-radius: 20px;
+
+    }
+
+
+    & q {
+      font-size: 2.6rem;
+    }
+  }
+
+}
+
+/* MENU appears */
+/* MOBILE */
+@media (max-width: 1024px) {
+  .art-wrapper {
+    flex-direction: column;
+    align-items: center;
+
+    & .art {
+      max-height: 72vw;
+      max-width: 72vw;
+
+      &#farkley {
+        min-width: 72vw;
+      }
+
+      &#anyamei-studios {
+        min-width: 72vw;
+        background-color: white;
+      }
+    }
+
+    & .product-item {
+      width: fit-content;
+    }
+  }
+
+  #job-titles {
+    display: flex;
+  }
+
+  .products {
+    flex-direction: column-reverse;
+  }
+
+  #introduction-text {
+    font-size: 2.5rem;
+  }
+
+  .social-links .icon {
+    width: 54px;
+    height: 54px;
+  }
+
+  .grid-products {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 1em;
+
+    & .product-item {
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+
+  .headline-wrapper {
+    flex-direction: column-reverse;
+  }
+
+  .languages-frameworks-list {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto;
+  }
+
+  #introduction-text {
+    font-size: 2rem;
+  }
+
+  .profile-pic {
+    margin-bottom: 1em;
+  }
+
+
+}
+
+@media (max-width: 640px) {
+
+  .blog {
+    & .quoted-text {
+      padding: 1em;
+    }
+  }
+
+}

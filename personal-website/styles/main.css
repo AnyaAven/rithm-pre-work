@@ -3,7 +3,9 @@
   --text: hsl(192, 81%, 6%);
   --background: hsl(198, 88%, 93%);
   --darkerBlue: hsl(191, 56%, 53%);
-  --pink900: hsl(332, 79%, 83%);
+  --WCAGcompliant: hsl(341, 64%, 59%);
+  --pink900: hsl(332, 79%, 78%);
+
   --pink300: hsl(332, 79%, 85%);
   --blue900: hsl(191, 54%, 63%);
   --blue800: hsl(191, 54%, 68%);
@@ -18,10 +20,11 @@
   --linearPrimarySecondary: linear-gradient(hsl(191, 56%, 53%), hsl(332, 79%, 85%));
   --linearPrimaryAccent: linear-gradient(hsl(191, 56%, 53%), hsl(192, 84%, 60%));
   --linearSecondaryAccent: linear-gradient(hsl(332, 79%, 85%), hsl(192, 84%, 60%));
-  --radialPrimarySecondary: radial-gradient(hsl(191, 56%, 53%), hsl(333, 80%, 72%));
+  /* hsl(333, 80%, 72%) */
+  --radialPrimarySecondary: radial-gradient(hsl(191, 56%, 53%), hsl(341, 64%, 67%));
   --radialPrimaryAccent: radial-gradient(hsl(191, 56%, 53%), hsl(192, 84%, 60%));
   --radialSecondaryAccent: radial-gradient(hsl(333, 80%, 72%), hsl(192, 84%, 60%));
-  --linearPink: linear-gradient(hsl(332, 40%, 85%), hsl(332, 79%, 85%));
+  --linearPink: linear-gradient(hsl(333, 40%, 85%), hsl(333, 79%, 82%));
 
 }
 
@@ -29,9 +32,7 @@
   box-sizing: border-box;
 }
 
-html,
-body {
-
+html, body {
   margin: 0;
   padding: 0;
 
@@ -42,8 +43,11 @@ body {
   background-color: var(--background);
 }
 
+a {
+  color: black;
+}
+
 .box {
-  /* https://css-generators.com/wavy-shapes/ */
   --mask:
     radial-gradient(53.65px at 50% 75.85px, #000 99%, #0000 101%) calc(50% - 74px) 0/148px 51% repeat-x,
     radial-gradient(53.65px at 50% -38.85px, #0000 99%, #000 101%) 50% 37px/148px calc(51% - 37px) repeat-x,
@@ -66,8 +70,10 @@ body {
 #main {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
-  justify-content: center;
+  /* allows footer to always be at the bottom minus the nav bar height */
+  min-height: calc(100dvh - 131px);
   gap: 20px;
 
 }
@@ -79,6 +85,12 @@ body {
   column-gap: 1vw;
 
   margin: 4vw;
+
+  align-items: center;
+
+    & #introduction-text {
+      text-align: center;
+    }
 }
 
 #introduction-text {
@@ -92,7 +104,7 @@ body {
 
   min-width: 300px;
 
-  font-size: 3em;
+  font-size: 3rem;
   font-weight: 800;
 
   & span {
@@ -101,16 +113,10 @@ body {
 
 }
 
-@media screen and (max-width: 980px) {
-  #introduction-text {
-    font-size: 2em;
-  }
-}
 
 .headline-text {
   color: var(--pink900)
 }
-
 
 .profile-pic {
   border-radius: 50% 50%;
@@ -118,11 +124,8 @@ body {
 
   box-shadow: 5px 15px 10px lightblue;
 
-
-
   max-height: 40vw;
   max-width: 40vw;
-
 
   &.small {
 
@@ -134,20 +137,18 @@ body {
 
 .products {
   display: flex;
+  flex-direction: row;
+  /* align-items: center; */
   justify-content: space-around;
   gap: 2vw;
-
 
   & .product-item {
     padding: 2rem;
     border-radius: 20px;
 
+    margin-inline: 1em;
+
     background: var(--blue400);
-
-    & span {
-      font-size: 4rem;
-    }
-
   }
 
   & h1 {
@@ -160,14 +161,12 @@ body {
   & p {
     margin: 0px;
   }
-
-
 }
 
 .grid-products {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: 2 fr repeat(3, 1fr);
+  grid-template-rows: auto;
 
   margin: 20px 8vw;
   row-gap: 2em;
@@ -175,46 +174,19 @@ body {
 
   grid-template-areas:
     "about values"
-    "software values"
-    "art values"
-    "music values"
+    "software resume"
+    "music art"
   ;
 
+  & h1 {
+    margin: 0px 0px 10px 0px;
+    font-size: 3rem;
 
-  & #values-intro-info {
-    grid-area: values;
-
-    & h1 {
-      font-size: 6rem;
-    }
-
-    & #more-values {
-      display: none;
-    }
-
-    & #more-values:target {
-      display: inline-block;
-    }
+    white-space: nowrap;
   }
 
-  & #about-intro-info {
-    grid-area: about;
-
-    & h1 {
-      font-size: 6rem;
-    }
-  }
-
-  & #software-intro-info {
-    grid-area: software;
-  }
-
-  & #art-intro-info {
-    grid-area: art;
-  }
-
-  & #music-intro-info {
-    grid-area: music;
+  & p {
+    margin: 0px;
   }
 
   & .product-item {
@@ -229,26 +201,30 @@ body {
       font-size: 4rem;
     }
   }
-
-
-
-  & h1 {
-    margin: 0px 0px 10px 0px;
-    font-size: 3rem;
-
-    white-space: nowrap;
-  }
-
-  & p {
-    margin: 0px;
-  }
 }
 
-/* TODO: add more styling */
+#values-intro-info {
+  grid-area: values;
+
+}
+#about-intro-info {
+  grid-area: about;
+}
+#software-intro-info {
+  grid-area: software;
+}
+#art-intro-info {
+  grid-area: art;
+}
+#music-intro-info {
+  grid-area: music;
+}
+
 .titles {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+
 
   /* each title */
   & section {
@@ -261,12 +237,11 @@ body {
     margin: 0.4em;
     padding: 2vw;
 
+    /* min font size will be 16px */
+    font-size: min(16px);
+
     & .years:last-child {
       padding-top: 2vw;
-    }
-
-    & .review {
-      font-size: 2rem;
     }
 
   }
@@ -295,7 +270,6 @@ body {
   max-width: 38vw;
 
   &#farkley {
-
     min-width: 38vw;
   }
 
@@ -310,128 +284,41 @@ body {
   list-style-type: none;
   padding: 0;
 
-  fill: white;
-}
-
-#github {
-  max-width: 40px;
-  max-height: 40px;
+  & .icon {
+    width: 68px;
+    height: 68px;
+  }
 }
 
 .languages-frameworks-list {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto;
+  gap: 2vw;
+
+  padding: 0;
+  margin: 0;
 
   & li {
     list-style-type: none;
     margin: 0 1vw;
-  }
-
-  padding: 0;
-
-}
-
-
-
-/*
-  TODO: Fix it for mobile use
-
-*/
-
-/* Medium Sizing */
-@media screen and (max-width: 1400px) {
-
-  .art {
-    &#farkley {
-      min-width: 30vw;
+    text-align: center;
+    & img {
+      width: 100px;
+      height: 100px;
     }
   }
-
-
-
-  .products {
-
-    .product-item {
-      margin: 1em;
-    }
-
-    /* The headlines of each sectioned area */
-    & h1,
-    .product-item span {
-      font-size: 2rem;
-    }
-  }
-
-  .titles:not(.headline-text) {
-    flex-direction: column;
-  }
-
-  #job-titles {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-  }
-
-
-
-  .grid-products {
-
-    margin: 20px 3em;
-    column-gap: 3em;
-
-    & .product-item {
-      padding: 20px;
-      font-size: 16px;
-    }
-
-    & h1 {
-      font-size: 2em;
-    }
-
-    & p {
-      font-size: 1em;
-    }
-
-    & #about-intro-info h1 {
-      font-size: 2em;
-
-    }
-
-    & #values-intro-info h1 {
-      font-size: 2em;
-    }
-
-    /* TODO: Fix */
-    & #more-values {
-      font-size: inherit;
-    }
-  }
-
-  .blog {
-    font-size: 1.3rem;
-    margin: 1vw 40px;
-
-
-    & .quoted-text {
-      padding: 80px;
-      border-radius: 20px;
-
-    }
-
-
-    & q {
-      font-size: 2.6rem;
-    }
-  }
-
 }
 
 footer {
   margin-top: 180px;
-  height: 50px;
   background: var(--blue500);
-
   padding: 40px;
 
   box-shadow: 0px -5px 10px var(--blue400);
+
+  & p {
+    display: flex;
+    justify-content: center;
+  }
 }
