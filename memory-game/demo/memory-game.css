@@ -1,9 +1,12 @@
 :root {
-  --linearGreenGrad: linear-gradient(hsl(139, 42%, 75%), hsl(139, 27%, 40%));
+  --linearGreenGrad: linear-gradient(hsl(141, 33%, 50%), hsl(141, 33%, 33%));
   --linearBlueGrad: linear-gradient(hsl(201, 42%, 75%), hsl(201, 27%, 64%));
+  --linearGlassGreen: linear-gradient(135deg, hsla(141, 33%, 33%, 0.6), hsla(141, 33%, 23%, 0.8));
+
 
   --lightBlue: hsl(201, 27%, 64%);
   --darkGreen: hsl(141, 33%, 33%);
+  --glassGreen: hsla(141, 33%, 33%, 0.2);
 }
 
 body {
@@ -36,7 +39,7 @@ button#start {
   box-shadow: 0 40px black;
 
   border-radius: 25px;
-  margin:0 4vw;
+  margin: 4vw;
   background-color: var(--darkGreen);
 }
 
@@ -46,9 +49,6 @@ button#start {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* TODO: remove */
-  color: gray;
 
   border-radius: 25px;
   height: 10vw;
@@ -60,7 +60,13 @@ button#start {
   display: none;
   border-radius: 25px;
 
-  background: var(--linearGreenGrad);
+  z-index: 100;
+  position: fixed;
+  top: calc(100dvh - 82vh);
+
+  background: var(--linearGlassGreen);
+  backdrop-filter: blur(20px);
+
   justify-content: center;
 
   height: 40vw;

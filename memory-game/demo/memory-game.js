@@ -25,6 +25,11 @@ function startGame() {
   const win = document.querySelector("#win-state");
   win.style.display = "none";
 
+
+  // remove any existing games
+  const oldGame = document.querySelector("#game");
+  oldGame.remove();
+
   //new game
   const game = document.createElement("div");
   game.id = "game";
@@ -147,13 +152,8 @@ function didUserWin() {
 
   const win = document.querySelector("#win-state");
 
-  // remove any existing games
-  const oldGame = document.querySelector("#game");
-  oldGame.remove();
-
   // TODO: change display if needed for better css design
   win.style.display = "flex";
-  win.style.backgroundColor = "green";
 
   startBtn.style.display = "flex"
   startBtn.innerText = "Wanna play again?"
