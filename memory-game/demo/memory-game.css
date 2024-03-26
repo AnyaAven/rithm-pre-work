@@ -61,7 +61,7 @@ button#start {
   border-radius: 25px;
 
   z-index: 100;
-  position: fixed;
+  position: absolute;
   top: calc(100dvh - 82vh);
 
   background: var(--linearGlassGreen);
