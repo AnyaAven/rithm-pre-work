@@ -2,20 +2,26 @@
 
 /** Memory game: find matching pairs of cards and flip both of them. */
 
-const FOUND_MATCH_WAIT_MSECS = 1000;
-const COLORS = [
-  "red", "blue", "green", "orange", "purple", "pink",
-  "red", "blue", "green", "orange", "purple", "pink",
-];
+// CUSTOMIZE
 const backOfCardColor = "grey";
+const FOUND_MATCH_WAIT_MSECS = 1000;
+// const COLORS = [
+//   "red", "blue", "green", "orange", "purple", "pink",
+//   "red", "blue", "green", "orange", "purple", "pink",
+// ];
+const COLORS = ["red", "red", "blue", "blue"];
 
-const colors = shuffle(COLORS);
+
+let colors = shuffle(COLORS);
 
 const startBtn = document.querySelector("#start");
 
 startBtn.addEventListener("click", startGame);
 
+// TODO: make previos game board disappear and have a new one to restart
 function startGame() {
+
+  colors = shuffle(COLORS)
   createCards(colors);
   startBtn.style.display = "none";
 }
@@ -74,27 +80,22 @@ function flipCard(card) {
 }
 
 /** Flip a card face-down. */
-
 function unFlipCard(card) {
   card.style.background = backOfCardColor;
 
   waiting = false;
-  numOfFlips = 0;
   firstCard = null;
 }
 
-
-let numOfFlips = 0;
 let firstCard = null;
 let waiting = false;
 
 /** Handle clicking on a card: this could be first-card or second-card. */
-
 function handleCardClick(evt) {
   const card = evt.target;
 
   if (waiting) return;
-  if (card.classList.contains("correctCard")) return;
+  if (card.classList.contains("matchedCard")) return;
 
   flipCard(card);
 
@@ -114,10 +115,11 @@ function handleCardClick(evt) {
   //if there is a match!
   if (color1 === color2) {
 
-    card.classList.add("correctCard");
-    firstCard.classList.add("correctCard");
+    card.classList.add("matchedCard");
+    firstCard.classList.add("matchedCard");
     firstCard = null;
 
+    didUserWin();
     return;
   }
 
@@ -126,6 +128,21 @@ function handleCardClick(evt) {
   setTimeout(unFlipCard, FOUND_MATCH_WAIT_MSECS, firstCard);
   setTimeout(unFlipCard, FOUND_MATCH_WAIT_MSECS, card);
 
+}
 
-  console.log("current:", card, "firstCard", firstCard);
+function didUserWin() {
+  const numOfMatches = document.querySelectorAll("#game .matchedCard").length;
+  const winningNum = colors.length;
+
+  if (numOfMatches !== winningNum) return;
+
+  console.log("you won!");
+  const win = document.querySelector("#win-state");
+
+
+  // TODO: change display if needed for better css design
+  win.style.display = "block";
+  win.style.backgroundColor = "green";
+
+  startBtn.style.display = "inline"
 }

@@ -19,3 +19,8 @@ body {
   margin: 1vw;
   display: inline-block;
 }
+
+#win-state {
+  display: none;
+  background-color: red;
+}
