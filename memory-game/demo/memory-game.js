@@ -7,11 +7,18 @@ const COLORS = [
   "red", "blue", "green", "orange", "purple", "pink",
   "red", "blue", "green", "orange", "purple", "pink",
 ];
+const backOfCardColor = "grey";
 
 const colors = shuffle(COLORS);
 
-createCards(colors);
+const startBtn = document.querySelector("#start");
 
+startBtn.addEventListener("click", startGame);
+
+function startGame() {
+  createCards(colors);
+  startBtn.style.display = "none";
+}
 
 /** Shuffle array items in-place and return shuffled array. */
 
@@ -41,11 +48,15 @@ function shuffle(items) {
 function createCards(colors) {
   const gameBoard = document.querySelector("#game");
 
+  let numId = 1;
   for (const color of colors) {
     const card = document.createElement("div");
     card.classList.add(color);
+    card.classList.add("card");
+    card.id = "card" + numId++;
 
     card.innerText = color;
+    card.style.backgroundColor = backOfCardColor;
 
     card.addEventListener("click", handleCardClick);
 
@@ -54,32 +65,28 @@ function createCards(colors) {
 }
 
 /** Flip a card face-up. */
-
-let numOfFlips = 0;
-let firstCard = null;
-let waiting = false;
-
 function flipCard(card) {
-  const color = card.classList;
+  //TODO: don't hard code the index
+  const color = card.classList[0];
 
   card.style.backgroundColor = color;
 
-  numOfFlips++;
 }
-
 
 /** Flip a card face-down. */
 
 function unFlipCard(card) {
-//TODO: the color should be inherited by the current color in CSS
-  const color = "grey";
-
-  card.style.background = color;
+  card.style.background = backOfCardColor;
 
   waiting = false;
   numOfFlips = 0;
   firstCard = null;
 }
+
+
+let numOfFlips = 0;
+let firstCard = null;
+let waiting = false;
 
 /** Handle clicking on a card: this could be first-card or second-card. */
 
@@ -87,43 +94,38 @@ function handleCardClick(evt) {
   const card = evt.target;
 
   if (waiting) return;
-  if(card.classList.contains("correctCard")) return;
+  if (card.classList.contains("correctCard")) return;
 
   flipCard(card);
 
-  //If there is no current card
+  //If there is no current card being displayed
   if (!firstCard) {
     firstCard = card;
-
-    console.log("currCard", firstCard);
     return;
   }
 
-  //if there is a current card
-  if (firstCard && numOfFlips === 2) {
+  //If you are clicked on the same card over and over, do nothing
+  if (firstCard.id === card.id) return;
 
-    //TODO: Try to fix this to not have a 0 index
-    const color1 = firstCard.classList[0];
-    const color2 = card.classList[0];
+  //TODO: Try to fix this to not have a 0 index
+  const color1 = firstCard.classList[0];
+  const color2 = card.classList[0];
 
-    //if there is a match!
-    if (color1 === color2) {
+  //if there is a match!
+  if (color1 === color2) {
 
-      card.classList.add("correctCard");
-      firstCard.classList.add("correctCard");
+    card.classList.add("correctCard");
+    firstCard.classList.add("correctCard");
+    firstCard = null;
 
-      numOfFlips = 0;
-      firstCard = null;
-
-      return;
-    }
-
-    //no match
-    waiting = true;
-    setTimeout(unFlipCard, FOUND_MATCH_WAIT_MSECS, firstCard);
-    setTimeout(unFlipCard, FOUND_MATCH_WAIT_MSECS, card);
-
+    return;
   }
 
-  console.log(firstCard);
+  //no match
+  waiting = true;
+  setTimeout(unFlipCard, FOUND_MATCH_WAIT_MSECS, firstCard);
+  setTimeout(unFlipCard, FOUND_MATCH_WAIT_MSECS, card);
+
+
+  console.log("current:", card, "firstCard", firstCard);
 }
