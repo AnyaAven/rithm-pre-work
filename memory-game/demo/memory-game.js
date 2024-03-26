@@ -5,11 +5,11 @@
 // CUSTOMIZE
 const backOfCardColor = "grey";
 const FOUND_MATCH_WAIT_MSECS = 1000;
-// const COLORS = [
-//   "red", "blue", "green", "orange", "purple", "pink",
-//   "red", "blue", "green", "orange", "purple", "pink",
-// ];
-const COLORS = ["red", "red", "blue", "blue"];
+const COLORS = [
+  "red", "blue", "green", "orange", "purple", "pink",
+  "red", "blue", "green", "orange", "purple", "pink",
+];
+// const COLORS = ["green", "green", "blue", "blue"];
 
 
 let colors = shuffle(COLORS);
@@ -20,6 +20,15 @@ startBtn.addEventListener("click", startGame);
 
 // TODO: make previos game board disappear and have a new one to restart
 function startGame() {
+
+  //clear win state
+  const win = document.querySelector("#win-state");
+  win.style.display = "none";
+
+  //new game
+  const game = document.createElement("div");
+  game.id = "game";
+  board.appendChild(game);
 
   colors = shuffle(COLORS)
   createCards(colors);
@@ -52,7 +61,7 @@ function shuffle(items) {
  */
 
 function createCards(colors) {
-  const gameBoard = document.querySelector("#game");
+  const game = document.querySelector("#game");
 
   let numId = 1;
   for (const color of colors) {
@@ -66,7 +75,7 @@ function createCards(colors) {
 
     card.addEventListener("click", handleCardClick);
 
-    gameBoard.appendChild(card);
+    game.appendChild(card);
   }
 }
 
@@ -136,13 +145,16 @@ function didUserWin() {
 
   if (numOfMatches !== winningNum) return;
 
-  console.log("you won!");
   const win = document.querySelector("#win-state");
 
+  // remove any existing games
+  const oldGame = document.querySelector("#game");
+  oldGame.remove();
 
   // TODO: change display if needed for better css design
-  win.style.display = "block";
+  win.style.display = "flex";
   win.style.backgroundColor = "green";
 
-  startBtn.style.display = "inline"
+  startBtn.style.display = "flex"
+  startBtn.innerText = "Wanna play again?"
 }
