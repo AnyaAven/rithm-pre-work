@@ -6,7 +6,7 @@ function sumUpDiagonals(matrix) {
 
   for (let i = 0; i < matrix.length; i++) {
 
-    diagNums.push(matrix[i][leftNum++]);
+    diagNums.push(mastrix[i][leftNum++]);
     diagNums.push(matrix[i][rightNum--]);
 
   }

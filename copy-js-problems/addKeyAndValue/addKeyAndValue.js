@@ -1,6 +1,6 @@
 
 function addKeyAndValue(arrOfObjs, key, val) {
-  for(const obj of arrOfObjs){
+  for (const obj of arrOfObjs) {
     obj[key] = val;
   }
 
