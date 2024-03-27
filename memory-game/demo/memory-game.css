@@ -62,7 +62,44 @@ button#start {
   height: 10vw;
   width: 10vw;
   margin: 1vw;
+
+  &.flip {
+    animation: flip 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+  }
+
+  &.unflip {
+    animation: flip 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+  }
 }
+
+@keyframes flip {
+  0% {
+    transform: translateX(0) rotateY(0);
+    transform-origin: 100% 50%;
+
+  }
+
+  100% {
+    transform: translateX(100%) rotateY(-180deg);
+    transform-origin: 0% 50%;
+  }
+}
+
+@keyframes unflip {
+
+  0% {
+    transform: translateX(100%) rotateY(-180deg);
+    transform-origin: 0% 50%;
+  }
+
+  100% {
+    transform: translateX(0) rotateY(0);
+    transform-origin: 100% 50%;
+
+  }
+}
+
+
 
 #win-state {
   display: none;

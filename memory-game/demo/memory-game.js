@@ -4,7 +4,7 @@
 
 // CUSTOMIZE
 const backOfCardColor = "grey";
-const FOUND_MATCH_WAIT_MSECS = 1000;
+const FOUND_MATCH_WAIT_MSECS = 2000;
 const COLORS = [
   "red", "blue", "green", "orange", "purple", "pink",
   "red", "blue", "green", "orange", "purple", "pink",
@@ -89,15 +89,39 @@ function flipCard(card) {
   //TODO: don't hard code the index
   const color = card.classList[0];
 
-  card.style.backgroundColor = color;
+  if (card.classList.contains("flipped")) {
+    return;
+  }
 
+  card.classList.add("flip");
+  card.classList.add("flipped");
+
+  setTimeout(function(){
+    card.style.backgroundColor = color;
+  }, 500, card)
+
+  setTimeout(function(){
+    card.classList.remove("flip");
+  }, 1000, card);
 }
 
 /** Flip a card face-down. */
 function unFlipCard(card) {
-  card.style.background = backOfCardColor;
 
-  waiting = false;
+  card.classList.remove("flipped");
+
+  card.classList.add("unflip");
+
+  setTimeout(function(){
+    card.style.backgroundColor = backOfCardColor;
+  }, 500, card)
+
+  setTimeout(function(){
+    card.classList.remove("unflip");
+
+    waiting = false;
+  }, 1000, card);
+
   firstCard = null;
 }
 
