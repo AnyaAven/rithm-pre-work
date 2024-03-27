@@ -3,10 +3,10 @@ function greatestCommonDivisor(int1, int2) {
   const facts1 = findFactors(int1).reverse();
   const facts2 = findFactors(int2).reverse();
 
-  for(const factor of facts2){
+  for (const factor of facts2) {
     const found = factorSearch(factor, facts1);
 
-    if(found){
+    if (found) {
       return found;
     }
   }
@@ -16,8 +16,8 @@ function greatestCommonDivisor(int1, int2) {
 function findFactors(num) {
   const factors = [];
 
-  for(let divisableBy = 1; divisableBy <= num; divisableBy++){
-    if(num % divisableBy === 0){
+  for (let divisableBy = 1; divisableBy <= num; divisableBy++) {
+    if (num % divisableBy === 0) {
       factors.push(divisableBy);
     }
   }
@@ -25,10 +25,10 @@ function findFactors(num) {
   return factors;
 }
 
-function factorSearch(searchVal, arr){
-  for(const val of arr){
-    if(searchVal > val) return null;
-    if(val === searchVal) return searchVal;
+function factorSearch(searchVal, arr) {
+  for (const val of arr) {
+    if (searchVal > val) return null;
+    if (val === searchVal) return searchVal;
   }
 
   return null;

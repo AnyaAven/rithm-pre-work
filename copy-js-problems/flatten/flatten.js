@@ -2,9 +2,9 @@
 function flatten(nestedArr) {
   const flatArr = [];
 
-  for(const val of nestedArr){
+  for (const val of nestedArr) {
 
-    if(Array.isArray(val)){
+    if (Array.isArray(val)) {
       flatArr.push(...val);
 
     } else {

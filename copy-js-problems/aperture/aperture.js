@@ -1,6 +1,6 @@
 
 function aperture(size, nums) {
-  if (size > nums.length || size === 0) return [];
+    if (size > nums.length || size === 0) return [];
 
     const newArr = [];
 

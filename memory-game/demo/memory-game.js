@@ -75,7 +75,7 @@ function createCards(colors) {
     card.classList.add("card");
     card.id = "card" + numId++;
 
-    card.innerText = color;
+    // card.innerText = color;
     card.style.backgroundColor = backOfCardColor;
 
     card.addEventListener("click", handleCardClick);

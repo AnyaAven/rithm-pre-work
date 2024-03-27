@@ -3,14 +3,14 @@ function twoArrayObject(keys, vals) {
   const obj = {};
 
   let i = 0;
-  for(const key of keys){
+  for (const key of keys) {
     const val = (vals[i] === undefined)
-    ? null
-    : vals[i];
+      ? null
+      : vals[i];
 
     obj[key] = val;
 
-    i++
+    i++;
   }
 
   return obj;

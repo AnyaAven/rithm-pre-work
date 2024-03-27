@@ -1,7 +1,7 @@
 
 function inRange(num, start, end = 0) {
 
-  if(start > end){
+  if (start > end) {
     [start, end] = [end, start];
   }
 

@@ -1,6 +1,6 @@
 
 function hasAZero(num) {
-  num = num.toString().split("")
+  num = num.toString().split("");
 
   return num.some(v => v === "0");
 }

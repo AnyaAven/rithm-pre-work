@@ -2,10 +2,10 @@
 function keyCount(arrOfObjs) {
   const freqKeyCount = {};
 
-  for(const obj of arrOfObjs){
+  for (const obj of arrOfObjs) {
 
-    for(const key in obj){
-      if(key in freqKeyCount){
+    for (const key in obj) {
+      if (key in freqKeyCount) {
         freqKeyCount[key]++;
       } else {
         freqKeyCount[key] = 1;
