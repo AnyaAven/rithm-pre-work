@@ -13,12 +13,11 @@ const COLORS = [
 
 
 let colors = shuffle(COLORS);
-
+let secs = 1;
 const startBtn = document.querySelector("#start");
 
 startBtn.addEventListener("click", startGame);
 
-// TODO: make previos game board disappear and have a new one to restart
 function startGame() {
 
   //clear win state
@@ -35,9 +34,27 @@ function startGame() {
   game.id = "game";
   board.appendChild(game);
 
+  //start timer
+  const time = document.querySelector("#timer");
+  time.style.display = "block"
+  secs = 1
+  timeCounter();
+
+
   colors = shuffle(COLORS)
   createCards(colors);
   startBtn.style.display = "none";
+}
+
+
+function timeCounter() {
+  const timer = document.querySelector("#secs");
+
+  setInterval(addSec, 1000, timer)
+}
+
+function addSec(timer){
+  timer.innerText = secs++;
 }
 
 /** Shuffle array items in-place and return shuffled array. */

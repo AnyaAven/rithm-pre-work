@@ -39,6 +39,10 @@ button#start {
 
 }
 
+#timer {
+  display: none;
+}
+
 #game {
   display: grid;
   grid-template-columns: auto auto auto auto;
@@ -76,7 +80,6 @@ button#start {
   0% {
     transform: translateX(0) rotateY(0);
     transform-origin: 100% 50%;
-
   }
 
   100% {
@@ -95,7 +98,6 @@ button#start {
   100% {
     transform: translateX(0) rotateY(0);
     transform-origin: 100% 50%;
-
   }
 }
 
