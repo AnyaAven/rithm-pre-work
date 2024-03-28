@@ -8,8 +8,6 @@ form.addEventListener("submit", addMeme)
 function addMeme(evt){
   evt.preventDefault();
 
-  console.log(form.children);
-
   const memeDetails = [];
   for(const input of form.children){
     if(input.type === "submit") break;
