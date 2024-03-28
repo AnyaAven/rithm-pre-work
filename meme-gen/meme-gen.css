@@ -52,11 +52,13 @@ h1 {
   &.meme-container:has(div + div){
     padding-bottom: 0;
   }
+}
 
+.meme-container div{
+  padding-inline: 1vw;
 }
 
 .remove {
-
   position: absolute;
   right: 0;
 
@@ -73,7 +75,7 @@ h1 {
   color: white;
   background-color: rgb(166, 30, 30);
   margin-top: 2vh;
-  padding: 0 1vw;
+  padding-inline: 1vw;
   border-radius: 4px;
   font-size: 1.5rem;
 }

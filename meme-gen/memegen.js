@@ -7,6 +7,11 @@ form.addEventListener("submit", addMeme)
 
 function addMeme(evt){
   evt.preventDefault();
+  // Remove previos error messages
+  const prevErrors = document.querySelectorAll(".error");
+  for(const error of prevErrors){
+    error.remove();
+  }
 
   const memeDetails = [];
   for(const input of form.children){
@@ -83,11 +88,6 @@ function hideRemoveButton(evt){
 }
 
 function createErrorMessage(message){
-  // Remove previos error messages
-  const prevErrors = document.querySelectorAll(".error");
-  for(const error of prevErrors){
-    error.remove();
-  }
 
   //add new error message
   const container = document.querySelector("#form-container");
