@@ -11,6 +11,7 @@ function addMeme(evt){
   const memeDetails = [];
   for(const input of form.children){
     if(input.type === "submit") break;
+    if(input.for === "label") break;
 
     // If the user has not added a url, don't do anything
     if(input.id === "img-url" && input.value === "") return;
@@ -48,6 +49,7 @@ function createMeme(details){
   // Add remove button
   const removeButton = document.createElement("button");
   removeButton.classList.add("remove");
+  removeButton.innerText = "Delete"
   memeContainer.append(removeButton);
   removeButton.addEventListener("click", removeMeme);
 
