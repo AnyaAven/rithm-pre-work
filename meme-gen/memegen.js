@@ -11,7 +11,6 @@ function addMeme(evt){
   const memeDetails = [];
   for(const input of form.children){
     if(input.type === "submit") break;
-    if(input.for === "label") break;
 
     // If the user has not added a url, don't do anything
     if(input.id === "img-url" && input.value === "") return;
@@ -53,6 +52,11 @@ function createMeme(details){
   memeContainer.append(removeButton);
   removeButton.addEventListener("click", removeMeme);
 
+  //Toggle visibility of remove button with a mouse hover
+  memeContainer.addEventListener("mouseenter", revealRemoveButton);
+  memeContainer.addEventListener("mouseleave", hideRemoveButton);
+
+
   return memeContainer;
 }
 
@@ -60,4 +64,17 @@ function removeMeme(evt){
   const target = evt.target;
 
   target.parentNode.remove();
+}
+
+function revealRemoveButton(evt){
+  const target = evt.target
+  const remove = target.lastChild;
+
+  remove.style.display = "block"
+}
+function hideRemoveButton(evt){
+  const target = evt.target
+  const remove = target.lastChild;
+
+  remove.style.display = "none"
 }

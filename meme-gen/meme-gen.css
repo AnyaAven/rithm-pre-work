@@ -21,6 +21,7 @@ h1 {
 #img-list {
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
 
   border-radius: 4px;
@@ -35,13 +36,33 @@ h1 {
   margin: 1vw;
   border-radius: 4px;
   box-shadow: -5px 5px 10px rgba(17, 16, 16, 0.475);
+
+  padding-bottom: 32px;
+  position: relative;
 }
 
 .meme {
   border-radius: 4px 4px 0 0;
 }
 
+.meme-container:has(div){
+  padding-bottom: 16px;
+  &.meme-container:has(div + div){
+    padding-bottom: 0;
+  }
+
+}
+
 .remove {
-  border-radius: 0 0 4px 4px;
+
+  position: absolute;
+  right: 0;
+
+  border-radius: 0 4px 0 4px;
   background-color: lightcoral;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
