@@ -8,22 +8,10 @@ form.addEventListener("submit", formGenerator)
 function formGenerator(evt){
   evt.preventDefault();
 
-  let first = true;
+
   const memeDetails = [];
   for(const input of form.children){
     if(input.type === "submit") break;
-
-    if(first){
-      const url = input.value;
-
-      console.log(url);
-      const img = document.createElement("img");
-      img.src = url;
-      imgList.append(img);
-      first = false;
-
-      continue;
-    }
 
     memeDetails.push(input.value);
   }
@@ -41,9 +29,20 @@ function createMeme(details){
   const memeContainer = document.createElement("div");
   memeContainer.classList.add("meme");
 
+  let first = true;
   for(const value of details){
     const item = document.createElement("div");
-    // TODO: add class
+
+    if(first){
+      const url = value;
+
+      const img = document.createElement("img");
+      img.src = url;
+
+      memeContainer.append(img);
+      first = false;
+      continue;
+    }
 
     item.innerText = value;
     memeContainer.append(item);
