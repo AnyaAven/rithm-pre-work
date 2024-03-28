@@ -1,3 +1,5 @@
+"use strict";
+
 const form = document.querySelector("#form");
 const imgList = document.querySelector("#img-list")
 
@@ -6,14 +8,25 @@ form.addEventListener("submit", formGenerator)
 function formGenerator(evt){
   evt.preventDefault();
 
+  let first = true;
   const memeDetails = [];
-
   for(const input of form.children){
     if(input.type === "submit") break;
 
+    if(first){
+      const url = input.value;
+
+      console.log(url);
+      const img = document.createElement("img");
+      img.src = url;
+      imgList.append(img);
+      first = false;
+
+      continue;
+    }
+
     memeDetails.push(input.value);
   }
-  console.log(memeDetails)
 
   const meme = createMeme(memeDetails)
 
