@@ -29,28 +29,25 @@ function addMeme(evt){
 
 function createMeme(details){
   const memeContainer = document.createElement("div");
-  memeContainer.classList.add("meme");
+  memeContainer.classList.add("meme-container");
 
-  let first = true;
+  // Add img
+  const url = details.shift();
+  const img = document.createElement("img");
+  img.classList.add("meme");
+  img.src = url;
+  memeContainer.append(img);
+
+  // Add optional details
   for(const value of details){
+    if(value === "") continue;
     const item = document.createElement("div");
-
-    if(first){
-      const url = value;
-
-      const img = document.createElement("img");
-      img.src = url;
-
-      memeContainer.append(img);
-      first = false;
-      continue;
-    }
 
     item.innerText = value;
     memeContainer.append(item);
   }
 
-  // remove button
+  // Add remove button
   const removeButton = document.createElement("button");
   removeButton.classList.add("remove");
   memeContainer.append(removeButton);
@@ -62,6 +59,5 @@ function createMeme(details){
 function removeMeme(evt){
   const target = evt.target;
 
-  console.log(target.parentNode);
   target.parentNode.remove();
 }
