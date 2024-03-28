@@ -68,11 +68,11 @@ button#start {
   margin: 1vw;
 
   &.flip {
-    animation: flip 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+    animation: flip 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
   }
 
   &.unflip {
-    animation: flip 1s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+    animation: flip 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
   }
 }
 

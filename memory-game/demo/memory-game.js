@@ -4,13 +4,40 @@
 
 // CUSTOMIZE
 const backOfCardColor = "grey";
-const FOUND_MATCH_WAIT_MSECS = 2000;
+const FOUND_MATCH_WAIT_MSECS = 1000;
 const COLORS = [
-  "red", "blue", "green", "orange", "purple", "pink",
-  "red", "blue", "green", "orange", "purple", "pink",
+  "red", "blue", "pink", "orange", "purple", "#800000",
+  "red", "blue", "pink", "orange", "purple", "#800000",
 ];
-// const COLORS = ["green", "green", "blue", "blue"];
+//const COLORS = ["green", "green", "blue", "blue"];
 
+/** Shuffle array items in-place and return shuffled array. */
+
+function shuffle(items) {
+  // This algorithm does a "perfect shuffle", where there won't be any
+  // statistical bias in the shuffle (many naive attempts to shuffle end up not
+  // be a fair shuffle). This is called the Fisher-Yates shuffle algorithm; if
+  // you're interested, you can learn about it, but it's not important.
+
+  for (let i = items.length - 1; i > 0; i--) {
+    // generate a random index between 0 and i
+    let j = Math.floor(Math.random() * i);
+    // swap item at i <-> item at j
+    [items[i], items[j]] = [items[j], items[i]];
+  }
+
+  return items;
+}
+
+function colorPicker(amountOfColors) {
+  const multiplier = 1 / (amountOfColors + 1);
+
+
+}
+
+function randomNumFrom(start, end) {
+  return Math.floor(Math.random() * (end - start + 1)) + start;
+}
 
 let colors = shuffle(COLORS);
 let secs = 1;
@@ -39,7 +66,7 @@ function startGame() {
   time.style.display = "block"
   secs = 1
   timeCounter();
-
+// TODO: make sure to clear the timer by using the set interval
 
   colors = shuffle(COLORS)
   createCards(colors);
@@ -50,6 +77,7 @@ function startGame() {
 function timeCounter() {
   const timer = document.querySelector("#secs");
 
+  // TODO: add a stop to the timer
   setInterval(addSec, 1000, timer)
 }
 
@@ -57,23 +85,6 @@ function addSec(timer){
   timer.innerText = secs++;
 }
 
-/** Shuffle array items in-place and return shuffled array. */
-
-function shuffle(items) {
-  // This algorithm does a "perfect shuffle", where there won't be any
-  // statistical bias in the shuffle (many naive attempts to shuffle end up not
-  // be a fair shuffle). This is called the Fisher-Yates shuffle algorithm; if
-  // you're interested, you can learn about it, but it's not important.
-
-  for (let i = items.length - 1; i > 0; i--) {
-    // generate a random index between 0 and i
-    let j = Math.floor(Math.random() * i);
-    // swap item at i <-> item at j
-    [items[i], items[j]] = [items[j], items[i]];
-  }
-
-  return items;
-}
 
 /** Create card for every color in colors (each will appear twice)
  *
@@ -115,11 +126,11 @@ function flipCard(card) {
 
   setTimeout(function(){
     card.style.backgroundColor = color;
-  }, 500, card)
+  }, 250, card)
 
   setTimeout(function(){
     card.classList.remove("flip");
-  }, 1000, card);
+  }, 500, card);
 }
 
 /** Flip a card face-down. */
@@ -131,13 +142,16 @@ function unFlipCard(card) {
 
   setTimeout(function(){
     card.style.backgroundColor = backOfCardColor;
-  }, 500, card)
+
+    // can change if you'd like to flip ASAP
+    waiting = false;
+  }, 250, card)
 
   setTimeout(function(){
     card.classList.remove("unflip");
 
-    waiting = false;
-  }, 1000, card);
+
+  }, 500, card);
 
   firstCard = null;
 }
@@ -192,9 +206,10 @@ function didUserWin() {
   if (numOfMatches !== winningNum) return;
 
   const win = document.querySelector("#win-state");
-
-  // TODO: change display if needed for better css design
   win.style.display = "flex";
+
+  const timer = document.querySelector("#timer");
+  timer.style.display = "none";
 
   startBtn.style.display = "flex"
   startBtn.innerText = "Wanna play again?"
