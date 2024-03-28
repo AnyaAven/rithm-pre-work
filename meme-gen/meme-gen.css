@@ -10,7 +10,9 @@ h1 {
 
 #form-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-bottom: 2vh;
 
   padding: 2vh;
@@ -65,4 +67,13 @@ h1 {
   &:hover {
     cursor: pointer;
   }
+}
+
+.error {
+  color: white;
+  background-color: rgb(166, 30, 30);
+  margin-top: 2vh;
+  padding: 0 1vw;
+  border-radius: 4px;
+  font-size: 1.5rem;
 }

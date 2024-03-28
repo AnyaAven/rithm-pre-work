@@ -13,7 +13,10 @@ function addMeme(evt){
     if(input.type === "submit") break;
 
     // If the user has not added a url, don't do anything
-    if(input.id === "img-url" && input.value === "") return;
+    if(input.id === "img-url" && input.value === "") {
+      createErrorMessage("Error, no URL entered");
+      return;
+    }
 
     memeDetails.push(input.value);
   }
@@ -77,4 +80,23 @@ function hideRemoveButton(evt){
   const remove = target.lastChild;
 
   remove.style.display = "none"
+}
+
+function createErrorMessage(message){
+  // Remove previos error messages
+  const prevErrors = document.querySelectorAll(".error");
+  for(const error of prevErrors){
+    error.remove();
+  }
+
+  //add new error message
+  const container = document.querySelector("#form-container");
+  const error = document.createElement("div");
+  error.classList.add("error");
+
+  error.innerText = message
+  ? message
+  : "Error";
+
+  container.append(error);
 }
