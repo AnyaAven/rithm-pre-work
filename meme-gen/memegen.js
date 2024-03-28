@@ -3,15 +3,19 @@
 const form = document.querySelector("#form");
 const imgList = document.querySelector("#img-list")
 
-form.addEventListener("submit", formGenerator)
+form.addEventListener("submit", addMeme)
 
-function formGenerator(evt){
+function addMeme(evt){
   evt.preventDefault();
 
+  console.log(form.children);
 
   const memeDetails = [];
   for(const input of form.children){
     if(input.type === "submit") break;
+
+    // If the user has not added a url, don't do anything
+    if(input.id === "img-url" && input.value === "") return;
 
     memeDetails.push(input.value);
   }
@@ -48,6 +52,7 @@ function createMeme(details){
 
   // remove button
   const removeButton = document.createElement("button");
+  removeButton.classList.add("remove");
   memeContainer.append(removeButton);
   removeButton.addEventListener("click", removeMeme);
 
