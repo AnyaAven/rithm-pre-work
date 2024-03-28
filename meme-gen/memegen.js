@@ -24,8 +24,6 @@ function formGenerator(evt){
 }
 
 function createMeme(details){
-  const li = document.createElement("li");
-
   const memeContainer = document.createElement("div");
   memeContainer.classList.add("meme");
 
@@ -48,7 +46,17 @@ function createMeme(details){
     memeContainer.append(item);
   }
 
-  li.append(memeContainer);
+  // remove button
+  const removeButton = document.createElement("button");
+  memeContainer.append(removeButton);
+  removeButton.addEventListener("click", removeMeme);
 
-  return li;
+  return memeContainer;
+}
+
+function removeMeme(evt){
+  const target = evt.target;
+
+  console.log(target.parentNode);
+  target.parentNode.remove();
 }
