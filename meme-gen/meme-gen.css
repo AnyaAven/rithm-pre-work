@@ -42,12 +42,16 @@ h1 {
 
   padding-bottom: 32px;
   position: relative;
+
+  min-width: 200px;
+  max-width: 400px;
 }
 
 .meme {
   border-radius: 4px 4px 0 0;
 }
 
+/* Always add padding at the bottom to have a nostalgic polaroid picture */
 .meme-container:has(div){
   padding-bottom: 16px;
   &.meme-container:has(div + div){
@@ -100,4 +104,7 @@ h1 {
 
 .img_description::before {
   content: " - ";
+}
+.img_description, .img_title {
+  word-wrap: break-word;
 }
