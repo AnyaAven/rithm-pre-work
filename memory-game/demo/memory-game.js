@@ -1,6 +1,9 @@
 "use strict";
 
 /** Memory game: find matching pairs of cards and flip both of them. */
+//TODO: add local storare
+//TODO: add score variable
+//TODO: add comments for all functions
 
 // CUSTOMIZE
 const backOfCardColor = "grey";
@@ -29,12 +32,14 @@ function shuffle(items) {
   return items;
 }
 
+//TODO: make this function work
 function colorPicker(amountOfColors) {
   const multiplier = 1 / (amountOfColors + 1);
 
 
 }
 
+//TODO: use this function for colorPicker?
 function randomNumFrom(start, end) {
   return Math.floor(Math.random() * (end - start + 1)) + start;
 }
@@ -50,7 +55,6 @@ function startGame() {
   //clear win state
   const win = document.querySelector("#win-state");
   win.style.display = "none";
-
 
   // remove any existing games
   const oldGame = document.querySelector("#game");
