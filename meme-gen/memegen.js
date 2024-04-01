@@ -8,7 +8,7 @@ function addMeme(evt) {
   evt.preventDefault();
   const form = evt.target;
 
-  // Remove previos error messages
+  // Remove previous error messages
   const prevErrors = document.querySelectorAll(".error");
   for (const error of prevErrors) {
     error.remove();
@@ -37,7 +37,7 @@ function createMeme(details) {
   memeContainer.classList.add("meme-container");
 
   // Add img
-  const img = makeImg(details, "img_url")
+  const img = makeImg(details.img_url)
   memeContainer.append(img);
 
   // Add optional title
@@ -56,7 +56,6 @@ function createMeme(details) {
   memeContainer.addEventListener("mouseenter", revealRemoveButton);
   memeContainer.addEventListener("mouseleave", hideRemoveButton);
 
-
   return memeContainer;
 }
 
@@ -71,8 +70,11 @@ function makeDetail(details, id) {
   return div;
 }
 
-function makeImg(details, id){
-  const url = details[id];
+/* Makes an img tag and returns it
+@param {object} details - The form input details
+@param {string} id - The key for details
+@returns img tag*/
+function makeImg(url){
   const img = document.createElement("img");
   img.classList.add("meme");
   img.src = url;
