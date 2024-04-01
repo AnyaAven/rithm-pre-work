@@ -16,6 +16,7 @@ function addMeme(evt) {
 
   const memeDetails = {};
   for (const [id, text] of new FormData(form)) {
+
     // If the user has not added a url, don't do anything
     if (id === "img_url" && text === "") {
       createErrorMessage("Error, no URL entered");
@@ -24,18 +25,6 @@ function addMeme(evt) {
 
     memeDetails[id] = text;
   }
-  // const memeDetails = {};
-  // for (const input of form.children) {
-  //   if (input.type !== "text") continue;
-
-  //   // If the user has not added a url, don't do anything
-  //   if (input.id === "img_url" && input.value === "") {
-  //     createErrorMessage("Error, no URL entered");
-  //     return;
-  //   }
-
-  //   memeDetails[input.id] = input.value;
-  // }
 
   const meme = createMeme(memeDetails);
   imgList.appendChild(meme);
@@ -48,18 +37,8 @@ function createMeme(details) {
   memeContainer.classList.add("meme-container");
 
   // Add img
-  const url = details.img_url;
-  const img = document.createElement("img");
-  img.classList.add("meme");
-  img.src = url;
+  const img = makeImg(details, "img_url")
   memeContainer.append(img);
-
-  //Check if URL is a valid image
-  img.addEventListener("error", function () {
-    createErrorMessage("URL is not a valid image");
-    //TODO: find a better way stop executing the code IF the url is invalid.
-    imgList.lastChild.remove();
-  });
 
   // Add optional title
   const title = makeDetail(details, "img_title");
@@ -70,11 +49,8 @@ function createMeme(details) {
   if (description !== null) memeContainer.append(description);
 
   // Add remove button
-  const removeButton = document.createElement("button");
-  removeButton.classList.add("remove");
-  removeButton.innerText = "Delete";
+  const removeButton = makeRemoveButton();
   memeContainer.append(removeButton);
-  removeButton.addEventListener("click", removeMeme);
 
   //Toggle visibility of remove button with a mouse hover
   memeContainer.addEventListener("mouseenter", revealRemoveButton);
@@ -93,6 +69,32 @@ function makeDetail(details, id) {
   div.classList.add(id);
 
   return div;
+}
+
+function makeImg(details, id){
+  const url = details[id];
+  const img = document.createElement("img");
+  img.classList.add("meme");
+  img.src = url;
+
+  //Check if URL is a valid image
+  img.addEventListener("error", function () {
+    createErrorMessage("URL is not a valid image");
+    //TODO: find a better way stop executing the code IF the url is invalid.
+    imgList.lastChild.remove();
+  });
+
+  return img;
+}
+
+function makeRemoveButton(){
+  const btn = document.createElement("button");
+  btn.classList.add("remove");
+  btn.innerText = "Delete";
+
+  btn.addEventListener("click", removeMeme);
+
+  return btn;
 }
 
 function removeMeme(evt) {
