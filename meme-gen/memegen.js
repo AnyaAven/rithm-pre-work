@@ -4,6 +4,12 @@ const imgList = document.querySelector("#img-list");
 
 form.addEventListener("submit", addMeme);
 
+// Add content from local storage
+for (const memeDetails of JSON.parse(localStorage.getItem("memes")?? "[]")) {
+  const meme = createMeme(memeDetails);
+  imgList.appendChild(meme);
+}
+
 /* Add meme to image-list on HTML */
 function addMeme(evt) {
   evt.preventDefault();
@@ -17,15 +23,26 @@ function addMeme(evt) {
 
   const memeDetails = {};
   for (const [id, text] of new FormData(form)) {
-
     // If the user has not added a url, don't do anything
     if (id === "img_url" && text === "") {
       createErrorMessage("Error, no URL entered");
       return;
     }
 
+    //Adds details from Title and Description
     memeDetails[id] = text;
   }
+
+  //Keeps track of what place the meme exists
+  memeDetails.id = Date.now();
+  console.log("ID", memeDetails.id);
+
+  //get localStorage
+  const memes = JSON.parse(localStorage.getItem("memes")?? "[]");
+  memes.push(memeDetails);
+
+  //Add to localStorage
+  localStorage.setItem("memes", JSON.stringify(memes));
 
   const meme = createMeme(memeDetails);
   imgList.appendChild(meme);
@@ -48,6 +65,9 @@ function createMeme(details) {
   //Add optional description
   const description = makeDetail(details, "img_description");
   if (description !== null) memeContainer.append(description);
+
+  // Add id
+  memeContainer.id = details.id;
 
   // Add remove button
   const removeButton = makeRemoveButton();
@@ -73,10 +93,6 @@ function makeDetail(details, id) {
   return div;
 }
 
-/* Makes an img tag and return it
-@param {object} details - The form input details
-@param {string} id - The key for details
-@returns img tag*/
 function makeImg(url) {
   const img = document.createElement("img");
   img.classList.add("meme");
@@ -107,16 +123,43 @@ function removeMeme(evt) {
   const target = evt.target;
 
   target.parentNode.remove();
+
+  const id = target.parentNode.id;
+  console.log("ID", id);
+  removeMemeFromLocalStorage(id);
+}
+
+function removeMemeFromLocalStorage(id){
+  const memes = JSON.parse(localStorage.getItem("memes"));
+
+  //Search for meme to remove
+  for(let i = 0; i < memes.length; i++){
+    const meme = memes[i];
+
+    if(+meme.id === +id) {
+
+      //remove meme
+      memes.splice(i, 1);
+
+      break;
+    }
+  }
+
+  //clear existing data
+  localStorage.clear();
+
+  //add modified data
+  localStorage.setItem("memes", JSON.stringify(memes));
 }
 
 function revealRemoveButton(evt) {
-  const btn = evt.target.children.namedItem("remove")
+  const btn = evt.target.children.namedItem("remove");
 
   btn.style.display = "block";
 }
 
 function hideRemoveButton(evt) {
-  const btn = evt.target.children.namedItem("remove")
+  const btn = evt.target.children.namedItem("remove");
 
   btn.style.display = "none";
 }

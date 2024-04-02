@@ -1,4 +1,5 @@
-body, html {
+body,
+html {
   background-color: rgb(106, 122, 132);
   font-family: copperplate, serif;
 }
@@ -52,20 +53,21 @@ h1 {
 }
 
 /* Always add padding at the bottom to have a nostalgic polaroid picture */
-.meme-container:has(div){
+.meme-container:has(div) {
   padding-bottom: 16px;
-  &.meme-container:has(div + div){
+
+  &.meme-container:has(div + div) {
     padding-bottom: 0;
   }
 }
 
-.meme-container div{
+.meme-container div {
   padding-inline: 1vw;
 }
 
 .remove {
-   /* display is none by default until JS mouseenter */
-   display: none;
+  /* display is none by default until JS mouseenter */
+  display: none;
 
   position: absolute;
   right: 0;
@@ -105,6 +107,26 @@ h1 {
 .img_description::before {
   content: " - ";
 }
-.img_description, .img_title {
+
+.img_description,
+.img_title {
   word-wrap: break-word;
+}
+
+#form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+@media (max-width: 980px) {
+  #form {
+    display: flex;
+    flex-direction: column;
+
+    & div {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+  }
 }
