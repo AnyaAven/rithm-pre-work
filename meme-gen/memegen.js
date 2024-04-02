@@ -4,11 +4,17 @@ const imgList = document.querySelector("#img-list");
 
 form.addEventListener("submit", addMeme);
 
-// Add content from local storage
-for (const memeDetails of JSON.parse(localStorage.getItem("memes")?? "[]")) {
-  const meme = createMeme(memeDetails);
-  imgList.appendChild(meme);
+function addMemesFromLocalStorage(){
+  //If no memes are present in local storage, set memes as an empty array
+  const memes = JSON.parse(localStorage.getItem("memes")) || [];
+
+  for (const memeDetails of memes) {
+    const meme = createMeme(memeDetails);
+    imgList.appendChild(meme);
+  }
 }
+
+addMemesFromLocalStorage();
 
 /* Add meme to image-list on HTML */
 function addMeme(evt) {
@@ -133,18 +139,6 @@ function removeMemeFromLocalStorage(id){
   const memes = JSON.parse(localStorage.getItem("memes"));
 
   //Search for meme to remove
-  // for(let i = 0; i < memes.length; i++){
-  //   const meme = memes[i];
-
-  //   if(+meme.id === +id) {
-
-  //     //remove meme
-  //     memes.splice(i, 1);
-
-  //     break;
-  //   }
-  // }
-
   const removePosition = memes.findIndex((meme) => {
     return +meme.id === +id;
   });
