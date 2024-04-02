@@ -4,6 +4,7 @@ const imgList = document.querySelector("#img-list");
 
 form.addEventListener("submit", addMeme);
 
+/* Add meme to image-list on HTML */
 function addMeme(evt) {
   evt.preventDefault();
   const form = evt.target;
@@ -37,7 +38,7 @@ function createMeme(details) {
   memeContainer.classList.add("meme-container");
 
   // Add img
-  const img = makeImg(details.img_url)
+  const img = makeImg(details.img_url);
   memeContainer.append(img);
 
   // Add optional title
@@ -59,6 +60,8 @@ function createMeme(details) {
   return memeContainer;
 }
 
+/* Make a div that holds descriptive details
+return null if details are empty */
 function makeDetail(details, id) {
   const text = details[id];
   if (text === "") return null;
@@ -70,11 +73,11 @@ function makeDetail(details, id) {
   return div;
 }
 
-/* Makes an img tag and returns it
+/* Makes an img tag and return it
 @param {object} details - The form input details
 @param {string} id - The key for details
 @returns img tag*/
-function makeImg(url){
+function makeImg(url) {
   const img = document.createElement("img");
   img.classList.add("meme");
   img.src = url;
@@ -82,16 +85,17 @@ function makeImg(url){
   //Check if URL is a valid image
   img.addEventListener("error", function () {
     createErrorMessage("URL is not a valid image");
-    //TODO: find a better way stop executing the code IF the url is invalid.
+    //TODO: Use a promise async / await to stop executing the code IF the url is invalid.
     imgList.lastChild.remove();
   });
 
   return img;
 }
 
-function makeRemoveButton(){
+function makeRemoveButton() {
   const btn = document.createElement("button");
   btn.classList.add("remove");
+  btn.setAttribute("name", "remove");
   btn.innerText = "Delete";
 
   btn.addEventListener("click", removeMeme);
@@ -106,17 +110,15 @@ function removeMeme(evt) {
 }
 
 function revealRemoveButton(evt) {
-  const target = evt.target;
-  const remove = target.lastChild;
+  const btn = evt.target.children.namedItem("remove")
 
-  remove.style.display = "block";
+  btn.style.display = "block";
 }
 
 function hideRemoveButton(evt) {
-  const target = evt.target;
-  const remove = target.lastChild;
+  const btn = evt.target.children.namedItem("remove")
 
-  remove.style.display = "none";
+  btn.style.display = "none";
 }
 
 function createErrorMessage(message) {
