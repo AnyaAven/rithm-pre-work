@@ -133,20 +133,22 @@ function removeMemeFromLocalStorage(id){
   const memes = JSON.parse(localStorage.getItem("memes"));
 
   //Search for meme to remove
-  for(let i = 0; i < memes.length; i++){
-    const meme = memes[i];
+  // for(let i = 0; i < memes.length; i++){
+  //   const meme = memes[i];
 
-    if(+meme.id === +id) {
+  //   if(+meme.id === +id) {
 
-      //remove meme
-      memes.splice(i, 1);
+  //     //remove meme
+  //     memes.splice(i, 1);
 
-      break;
-    }
-  }
+  //     break;
+  //   }
+  // }
 
-  //clear existing data
-  localStorage.clear();
+  const removePosition = memes.findIndex((meme) => {
+    return +meme.id === +id;
+  });
+  memes.splice(removePosition, 1);
 
   //add modified data
   localStorage.setItem("memes", JSON.stringify(memes));
