@@ -4,15 +4,16 @@
 //TODO: add local storare
 //TODO: add score variable
 //TODO: add comments for all functions
+//TODO: Add instructions?
 
 // CUSTOMIZE
 const backOfCardColor = "grey";
 const FOUND_MATCH_WAIT_MSECS = 1000;
-const COLORS = [
-  "red", "blue", "pink", "orange", "purple", "#800000",
-  "red", "blue", "pink", "orange", "purple", "#800000",
-];
-//const COLORS = ["green", "green", "blue", "blue"];
+// const COLORS = [
+//   "red", "blue", "pink", "orange", "purple", "#800000",
+//   "red", "blue", "pink", "orange", "purple", "#800000",
+// ];
+const COLORS = ["green", "green", "blue", "blue"];
 
 /** Shuffle array items in-place and return shuffled array. */
 
@@ -50,6 +51,8 @@ const startBtn = document.querySelector("#start");
 
 startBtn.addEventListener("click", startGame);
 
+let previousTimer;
+
 function startGame() {
 
   //clear win state
@@ -65,11 +68,13 @@ function startGame() {
   game.id = "game";
   board.appendChild(game);
 
+  //clear existing timer
+  clearInterval(previousTimer);
   //start timer
   const time = document.querySelector("#timer");
+  secs = 1000;
   time.style.display = "block"
-  secs = 1
-  timeCounter();
+  previousTimer = timeCounter();
 // TODO: make sure to clear the timer by using the set interval
 
   colors = shuffle(COLORS)
@@ -79,10 +84,10 @@ function startGame() {
 
 
 function timeCounter() {
-  const timer = document.querySelector("#secs");
+  const html_timer = document.querySelector("#secs");
 
   // TODO: add a stop to the timer
-  setInterval(addSec, 1000, timer)
+  return setInterval(addSec, 1000, html_timer)
 }
 
 function addSec(timer){
