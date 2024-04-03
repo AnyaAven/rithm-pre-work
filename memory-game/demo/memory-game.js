@@ -8,7 +8,11 @@
 
 // CUSTOMIZE
 const backOfCardColor = "grey";
-const FOUND_MATCH_WAIT_MSECS = 1000;
+const FOUND_CARDS_WAIT_MSECS = 1000;
+
+//Amount of time to flip the cards
+const FLIP_TIME_MSECS = 500;
+
 // const COLORS = [
 //   "red", "blue", "pink", "orange", "purple", "#800000",
 //   "red", "blue", "pink", "orange", "purple", "#800000",
@@ -33,37 +37,18 @@ function shuffle(items) {
   return items;
 }
 
-//TODO: make this function work
-function colorPicker(amountOfColors) {
-  const multiplier = 1 / (amountOfColors + 1);
-
-
-}
-
-//TODO: use this function for colorPicker?
-function randomNumFrom(start, end) {
-  return Math.floor(Math.random() * (end - start + 1)) + start;
-}
-
+let previousTimer;
 let colors = shuffle(COLORS);
 let secs = 1;
+
 const startBtn = document.querySelector("#start");
-
 startBtn.addEventListener("click", startGame);
-
-let previousTimer;
 
 function startGame() {
 
-  //start timer
-  const time = document.querySelector("#timer");
-  secs = 1;
-  time.style.display = "block"
-  previousTimer = timeCounter();
-
-   // remove any existing games
-   const oldGame = document.querySelector("#game");
-   oldGame.remove();
+  // remove any existing games
+  const oldGame = document.querySelector("#game");
+  oldGame.remove();
 
   //clear win state
   const win = document.querySelector("#win-state");
@@ -74,12 +59,19 @@ function startGame() {
   game.id = "game";
   board.appendChild(game);
 
+  //start timer
+  const time = document.querySelector("#timer");
+  secs = 1;
+  time.style.display = "block"
+  previousTimer = timeCounter();
 
+  //Create cards and add to the game
   colors = shuffle(COLORS)
   createCards(colors);
+
+  //Hide start button
   startBtn.style.display = "none";
 }
-
 
 function timeCounter() {
   const html_timer = document.querySelector("#secs");
@@ -91,7 +83,6 @@ function addSec(timer){
   timer.innerText = secs++;
 }
 
-
 /** Create card for every color in colors (each will appear twice)
  *
  * Each card is a div DOM element that will have:
@@ -102,6 +93,7 @@ function addSec(timer){
 function createCards(colors) {
   const game = document.querySelector("#game");
 
+  //id for each card
   let numId = 1;
   for (const color of colors) {
     const card = document.createElement("div");
@@ -109,7 +101,6 @@ function createCards(colors) {
     card.classList.add("card");
     card.id = "card" + numId++;
 
-    // card.innerText = color;
     card.style.backgroundColor = backOfCardColor;
 
     card.addEventListener("click", handleCardClick);
@@ -120,23 +111,27 @@ function createCards(colors) {
 
 /** Flip a card face-up. */
 function flipCard(card) {
-  //TODO: don't hard code the index
   const color = card.classList[0];
 
+  //Don't flip card if already flipped
   if (card.classList.contains("flipped")) {
     return;
   }
 
+  //adds flip animation
   card.classList.add("flip");
+  //Specifies that the card has been flipped
   card.classList.add("flipped");
 
+  //Change card color half way through flip animation
   setTimeout(function(){
     card.style.backgroundColor = color;
-  }, 250, card)
+  }, FLIP_TIME_MSECS / 2, card)
 
+  //Remove flip animation
   setTimeout(function(){
     card.classList.remove("flip");
-  }, 500, card);
+  }, FLIP_TIME_MSECS, card);
 }
 
 /** Flip a card face-down. */
@@ -144,21 +139,23 @@ function unFlipCard(card) {
 
   card.classList.remove("flipped");
 
+  //Adds unflip animation
   card.classList.add("unflip");
 
+//Change card color half way through flip animation
   setTimeout(function(){
     card.style.backgroundColor = backOfCardColor;
 
-    // can change if you'd like to flip ASAP
+    //Change waiting to false to allow user to continue clicking for a match
     waiting = false;
-  }, 250, card)
+  }, FLIP_TIME_MSECS / 2, card)
 
+  //Remove unflip animation
   setTimeout(function(){
     card.classList.remove("unflip");
+  }, FLIP_TIME_MSECS, card);
 
-
-  }, 500, card);
-
+  //Reset first card
   firstCard = null;
 }
 
@@ -169,9 +166,12 @@ let waiting = false;
 function handleCardClick(evt) {
   const card = evt.target;
 
+  //Don't do anything if we are waiting to unflip our un matched cards
   if (waiting) return;
+  //Dont do anything if we click on a matched card
   if (card.classList.contains("matchedCard")) return;
 
+  //Flip our first card
   flipCard(card);
 
   //If there is no current card being displayed
@@ -180,29 +180,31 @@ function handleCardClick(evt) {
     return;
   }
 
-  //If you are clicked on the same card over and over, do nothing
+  //If user clickes on the same card over and over, do nothing
   if (firstCard.id === card.id) return;
 
-  //TODO: Try to fix this to not have a 0 index
   const color1 = firstCard.classList[0];
   const color2 = card.classList[0];
 
   //if there is a match!
   if (color1 === color2) {
 
+    //Add matchedCard classes
     card.classList.add("matchedCard");
     firstCard.classList.add("matchedCard");
+
+    //Reset first card
     firstCard = null;
 
+    //Check if User has won the game
     didUserWin();
     return;
   }
 
-  //no match
+  //no match, allow user to see incorrectly matched cards for a specified time
   waiting = true;
-  setTimeout(unFlipCard, FOUND_MATCH_WAIT_MSECS, firstCard);
-  setTimeout(unFlipCard, FOUND_MATCH_WAIT_MSECS, card);
-
+  setTimeout(unFlipCard, FOUND_CARDS_WAIT_MSECS, firstCard);
+  setTimeout(unFlipCard, FOUND_CARDS_WAIT_MSECS, card);
 }
 
 function didUserWin() {
@@ -212,6 +214,7 @@ function didUserWin() {
   //Checks if user has the correct amount of matched cards
   if (numOfMatches !== winningNum) return;
 
+  //TODO: add settime out FOUND_CARDS_WAIT_MSECS
   //User wins!
   const win = document.querySelector("#win-state");
   win.style.display = "flex";
@@ -221,7 +224,7 @@ function didUserWin() {
   //Remove timer from view
   const timer = document.querySelector("#timer");
   timer.style.display = "none";
-  //Reset the timer
+  //Reset the html timer
   timer.children["secs"].innerText = 0;
 
   //Restart button
