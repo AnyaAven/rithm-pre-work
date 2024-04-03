@@ -55,27 +55,25 @@ let previousTimer;
 
 function startGame() {
 
+  //start timer
+  const time = document.querySelector("#timer");
+  secs = 1;
+  time.style.display = "block"
+  previousTimer = timeCounter();
+
+   // remove any existing games
+   const oldGame = document.querySelector("#game");
+   oldGame.remove();
+
   //clear win state
   const win = document.querySelector("#win-state");
   win.style.display = "none";
-
-  // remove any existing games
-  const oldGame = document.querySelector("#game");
-  oldGame.remove();
 
   //new game
   const game = document.createElement("div");
   game.id = "game";
   board.appendChild(game);
 
-  //clear existing timer
-  clearInterval(previousTimer);
-  //start timer
-  const time = document.querySelector("#timer");
-  secs = 1000;
-  time.style.display = "block"
-  previousTimer = timeCounter();
-// TODO: make sure to clear the timer by using the set interval
 
   colors = shuffle(COLORS)
   createCards(colors);
@@ -86,7 +84,6 @@ function startGame() {
 function timeCounter() {
   const html_timer = document.querySelector("#secs");
 
-  // TODO: add a stop to the timer
   return setInterval(addSec, 1000, html_timer)
 }
 
@@ -217,8 +214,12 @@ function didUserWin() {
   const win = document.querySelector("#win-state");
   win.style.display = "flex";
 
+  //clear existing timer interval
+  clearInterval(previousTimer);
+  //
   const timer = document.querySelector("#timer");
   timer.style.display = "none";
+  timer.children["secs"].innerText = 0;
 
   startBtn.style.display = "flex"
   startBtn.innerText = "Wanna play again?"
