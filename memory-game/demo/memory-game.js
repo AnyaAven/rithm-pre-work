@@ -209,18 +209,22 @@ function didUserWin() {
   const numOfMatches = document.querySelectorAll("#game .matchedCard").length;
   const winningNum = colors.length;
 
+  //Checks if user has the correct amount of matched cards
   if (numOfMatches !== winningNum) return;
 
+  //User wins!
   const win = document.querySelector("#win-state");
   win.style.display = "flex";
 
   //clear existing timer interval
   clearInterval(previousTimer);
-  //
+  //Remove timer from view
   const timer = document.querySelector("#timer");
   timer.style.display = "none";
+  //Reset the timer
   timer.children["secs"].innerText = 0;
 
+  //Restart button
   startBtn.style.display = "flex"
   startBtn.innerText = "Wanna play again?"
 }
