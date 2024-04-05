@@ -95,6 +95,7 @@ function createCards(colors) {
 
   //id for each card
   let numId = 1;
+
   for (const color of colors) {
     const card = document.createElement("div");
     card.classList.add(color);
@@ -197,7 +198,10 @@ function handleCardClick(evt) {
     firstCard = null;
 
     //Check if User has won the game
-    didUserWin();
+    if(didUserWin()) {
+      //User wins!
+      setTimeout(handleWin, FOUND_CARDS_WAIT_MSECS)
+    }
     return;
   }
 
@@ -212,10 +216,7 @@ function didUserWin() {
   const winningNum = colors.length;
 
   //Checks if user has the correct amount of matched cards
-  if (numOfMatches !== winningNum) return;
-
-  //User wins!
-  setTimeout(handleWin, FOUND_CARDS_WAIT_MSECS)
+  return numOfMatches === winningNum;
 }
 
 function handleWin() {
