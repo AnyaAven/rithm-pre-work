@@ -13,14 +13,13 @@ const FOUND_CARDS_WAIT_MSECS = 1000;
 //Amount of time to flip the cards
 const FLIP_TIME_MSECS = 500;
 
-// const COLORS = [
-//   "red", "blue", "pink", "orange", "purple", "#800000",
-//   "red", "blue", "pink", "orange", "purple", "#800000",
-// ];
-const COLORS = ["green", "green", "blue", "blue"];
+const COLORS = [
+  "red", "blue", "pink", "orange", "purple", "#800000",
+  "red", "blue", "pink", "orange", "purple", "#800000",
+];
+// const COLORS = ["green", "green", "blue", "blue"];
 
 /** Shuffle array items in-place and return shuffled array. */
-
 function shuffle(items) {
   // This algorithm does a "perfect shuffle", where there won't be any
   // statistical bias in the shuffle (many naive attempts to shuffle end up not
@@ -39,7 +38,11 @@ function shuffle(items) {
 
 let previousTimer;
 let colors = shuffle(COLORS);
-let secs = 1;
+let secs;
+
+// Score variables
+let consecutiveMatches;
+let guesses;
 
 const startBtn = document.querySelector("#start");
 startBtn.addEventListener("click", startGame);
@@ -65,6 +68,11 @@ function startGame() {
   time.style.display = "block";
   previousTimer = timeCounter();
 
+  // Reset score
+  document.querySelector("#score").innerText = 0;
+  consecutiveMatches = 0;
+  guesses = 0;
+
   //Create cards and add to the game
   colors = shuffle(COLORS);
   createCards(colors);
@@ -73,6 +81,7 @@ function startGame() {
   startBtn.style.display = "none";
 }
 
+/* Returns TimerHandler to clear each timer */
 function timeCounter() {
   const html_timer = document.querySelector("#secs");
 
@@ -163,6 +172,7 @@ function unFlipCard(card) {
 let firstCard = null;
 let waiting = false;
 
+
 /** Handle clicking on a card: this could be first-card or second-card. */
 function handleCardClick(evt) {
   const card = evt.target;
@@ -190,22 +200,29 @@ function handleCardClick(evt) {
   //if there is a match!
   if (color1 === color2) {
 
-    //Add matchedCard classes
+    // Add matchedCard classes
     card.classList.add("matchedCard");
     firstCard.classList.add("matchedCard");
+
+    // Add score
+    consecutiveMatches++;
+    guesses++;
+    updateScore();
 
     //Reset first card
     firstCard = null;
 
     //Check if User has won the game
-    if(didUserWin()) {
+    if (didUserWin()) {
       //User wins!
-      setTimeout(handleWin, FOUND_CARDS_WAIT_MSECS)
+      setTimeout(handleWin, FOUND_CARDS_WAIT_MSECS);
     }
     return;
   }
 
   //no match, allow user to see incorrectly matched cards for a specified time
+  consecutiveMatches = 0;
+  guesses++;
   waiting = true;
   setTimeout(unFlipCard, FOUND_CARDS_WAIT_MSECS, firstCard);
   setTimeout(unFlipCard, FOUND_CARDS_WAIT_MSECS, card);
@@ -236,4 +253,55 @@ function handleWin() {
   //Restart button
   startBtn.style.display = "flex";
   startBtn.innerText = "Wanna play again?";
+}
+
+/* Updates score */
+function updateScore(){
+  const scoreEl = document.querySelector("#score");
+  const currentScore = Number(scoreEl.innerText)
+
+  scoreEl.innerText = currentScore + score();
+}
+
+/* Calculate score */
+function score() {
+  let score = 0;
+
+  // Decreasing score, will be awarded less and less each second
+  const secsScore = Math.max(4000 - (secs * secs), 0);
+
+  // Fixed amount, will be awarded with having a higher amount of cards
+  const colorsScore = colors.length * 50;
+
+  // Increasing score, will be awarded the more matched cards are on the screen
+  const matchedCardsScore = document.querySelectorAll(".matchedCard").length * 50;
+
+  // Increasing score, will be highly awarded with consecutive matches
+  const consecutiveScore = consecutiveMatches * 2000;
+
+  // Decreasing score, user will be have a smaller score per guess
+  const guessPenalty = guesses * 200;
+
+  score += secsScore;
+  score += colorsScore;
+  score += matchedCardsScore;
+  score += consecutiveMatches;
+  score -= guessPenalty;
+
+  console.log(
+    {
+      secsScore,
+      colorsScore,
+      matchedCardsScore,
+      consecutiveScore,
+      guessPenalty,
+    },
+    "final score",
+    score
+  );
+
+  // Ensure score is not negative with a base score of 200
+  score = Math.max(score, 200);
+
+  return score;
 }
