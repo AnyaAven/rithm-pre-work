@@ -258,9 +258,14 @@ function handleWin() {
 /* Updates score */
 function updateScore(){
   const scoreEl = document.querySelector("#score");
-  const currentScore = Number(scoreEl.innerText)
 
-  scoreEl.innerText = currentScore + score();
+  //Remove any existing commas during previos formats
+  const previousScore = scoreEl.innerText.replace(",", "");
+
+  const currentScore = Number(previousScore) + score();
+
+  // Update
+  scoreEl.innerText = formatNumber(currentScore);
 }
 
 /* Calculate score */
@@ -304,4 +309,19 @@ function score() {
   score = Math.max(score, 200);
 
   return score;
+}
+
+/* Add a comma every 3 numbers backwards */
+function formatNumber(num){
+  num = num.toString();
+  const reversed = num.split("").reverse().join("");
+
+  const groupsOf3 = [];
+
+  for(let i = 0; i < reversed.length; i += 3){
+    const group = reversed.substr(i, 3).split("").reverse().join("");
+    groupsOf3.push(group);
+  }
+
+  return groupsOf3.reverse().join(",");
 }
