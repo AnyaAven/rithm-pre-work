@@ -2,8 +2,6 @@
 
 /** Memory game: find matching pairs of cards and flip both of them. */
 //TODO: add local storare
-//TODO: add score variable
-//TODO: add comments for all functions
 //TODO: Add instructions?
 
 // CUSTOMIZE
@@ -273,7 +271,7 @@ function score() {
   let score = 0;
 
   // Decreasing score, will be awarded less and less each second
-  const secsScore = Math.max(4000 - (secs * secs), 0);
+  const secsScore = Math.max(1000 - (secs * secs), 0);
 
   // Fixed amount, will be awarded with having a higher amount of cards
   const colorsScore = colors.length * 50;
@@ -290,7 +288,7 @@ function score() {
   score += secsScore;
   score += colorsScore;
   score += matchedCardsScore;
-  score += consecutiveMatches;
+  score += consecutiveScore;
   score -= guessPenalty;
 
   console.log(
@@ -324,4 +322,20 @@ function formatNumber(num){
   }
 
   return groupsOf3.reverse().join(",");
+}
+
+function makeHighscore() {
+  const scoreEl = document.querySelector("#score");
+  //Remove any existing commas during previos formats
+  const formattedScore = scoreEl.innerText.replace(",", "");
+
+  const score = Number(formattedScore);
+
+  //TODO: get user's name
+  const name = "Your score";
+
+  const date = new Date();
+  date = date.toDateString();
+
+  const tr = document.createElement(:);
 }
