@@ -211,6 +211,7 @@ function handleCardClick(evt) {
   setTimeout(unFlipCard, FOUND_CARDS_WAIT_MSECS, card);
 }
 
+/* Returns true or false if user has won*/
 function didUserWin() {
   const numOfMatches = document.querySelectorAll("#game .matchedCard").length;
   const winningNum = colors.length;
@@ -219,6 +220,7 @@ function didUserWin() {
   return numOfMatches === winningNum;
 }
 
+/* Handles win state */
 function handleWin() {
   const win = document.querySelector("#win-state");
   win.style.display = "flex";
