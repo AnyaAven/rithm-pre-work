@@ -62,11 +62,11 @@ function startGame() {
   //start timer
   const time = document.querySelector("#timer");
   secs = 1;
-  time.style.display = "block"
+  time.style.display = "block";
   previousTimer = timeCounter();
 
   //Create cards and add to the game
-  colors = shuffle(COLORS)
+  colors = shuffle(COLORS);
   createCards(colors);
 
   //Hide start button
@@ -76,10 +76,10 @@ function startGame() {
 function timeCounter() {
   const html_timer = document.querySelector("#secs");
 
-  return setInterval(addSec, 1000, html_timer)
+  return setInterval(addSec, 1000, html_timer);
 }
 
-function addSec(timer){
+function addSec(timer) {
   timer.innerText = secs++;
 }
 
@@ -124,12 +124,12 @@ function flipCard(card) {
   card.classList.add("flipped");
 
   //Change card color half way through flip animation
-  setTimeout(function(){
+  setTimeout(function () {
     card.style.backgroundColor = color;
-  }, FLIP_TIME_MSECS / 2, card)
+  }, FLIP_TIME_MSECS / 2, card);
 
   //Remove flip animation
-  setTimeout(function(){
+  setTimeout(function () {
     card.classList.remove("flip");
   }, FLIP_TIME_MSECS, card);
 }
@@ -142,16 +142,16 @@ function unFlipCard(card) {
   //Adds unflip animation
   card.classList.add("unflip");
 
-//Change card color half way through flip animation
-  setTimeout(function(){
+  //Change card color half way through flip animation
+  setTimeout(function () {
     card.style.backgroundColor = backOfCardColor;
 
     //Change waiting to false to allow user to continue clicking for a match
     waiting = false;
-  }, FLIP_TIME_MSECS / 2, card)
+  }, FLIP_TIME_MSECS / 2, card);
 
   //Remove unflip animation
-  setTimeout(function(){
+  setTimeout(function () {
     card.classList.remove("unflip");
   }, FLIP_TIME_MSECS, card);
 
@@ -214,8 +214,11 @@ function didUserWin() {
   //Checks if user has the correct amount of matched cards
   if (numOfMatches !== winningNum) return;
 
-  //TODO: add settime out FOUND_CARDS_WAIT_MSECS
   //User wins!
+  setTimeout(handleWin, FOUND_CARDS_WAIT_MSECS)
+}
+
+function handleWin() {
   const win = document.querySelector("#win-state");
   win.style.display = "flex";
 
@@ -228,6 +231,6 @@ function didUserWin() {
   timer.children["secs"].innerText = 0;
 
   //Restart button
-  startBtn.style.display = "flex"
-  startBtn.innerText = "Wanna play again?"
+  startBtn.style.display = "flex";
+  startBtn.innerText = "Wanna play again?";
 }
