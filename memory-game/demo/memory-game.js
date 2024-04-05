@@ -11,11 +11,11 @@ const FOUND_CARDS_WAIT_MSECS = 1000;
 //Amount of time to flip the cards
 const FLIP_TIME_MSECS = 500;
 
-const COLORS = [
-  "red", "blue", "pink", "orange", "purple", "#800000",
-  "red", "blue", "pink", "orange", "purple", "#800000",
-];
-// const COLORS = ["green", "green", "blue", "blue"];
+// const COLORS = [
+//   "red", "blue", "pink", "orange", "purple", "#800000",
+//   "red", "blue", "pink", "orange", "purple", "#800000",
+// ];
+const COLORS = ["green", "green", "blue", "blue"];
 
 /** Shuffle array items in-place and return shuffled array. */
 function shuffle(items) {
@@ -251,6 +251,9 @@ function handleWin() {
   //Restart button
   startBtn.style.display = "flex";
   startBtn.innerText = "Wanna play again?";
+
+  // Update highscore board
+  updateHighscoreBoard();
 }
 
 /* Updates score */
@@ -324,18 +327,39 @@ function formatNumber(num){
   return groupsOf3.reverse().join(",");
 }
 
+function updateHighscoreBoard(){
+  const tbody = document.querySelector("tbody");
+  tbody.append(makeHighscore());
+}
+
+/* Return table row with name, score, and date data */
 function makeHighscore() {
-  const scoreEl = document.querySelector("#score");
-  //Remove any existing commas during previos formats
-  const formattedScore = scoreEl.innerText.replace(",", "");
+  // SCORE
+  const score = document.querySelector("#score").innerText;
 
-  const score = Number(formattedScore);
+  // NAME
+  const name = "You";
 
-  //TODO: get user's name
-  const name = "Your score";
-
-  const date = new Date();
+  //DATE
+  let date = new Date();
   date = date.toDateString();
 
-  const tr = document.createElement(:);
+  const dataSet = [name, score, date];
+
+
+  const tr = document.createElement("tr");
+
+  // add data to table row
+  for(let data of dataSet){
+    tr.append(makeTableData(data));
+  }
+
+  return tr;
+}
+
+function makeTableData(data){
+  const td = document.createElement("td");
+  td.innerText = data;
+
+  return td;
 }
