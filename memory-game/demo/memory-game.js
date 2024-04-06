@@ -1,7 +1,7 @@
 "use strict";
 
 /** Memory game: find matching pairs of cards and flip both of them. */
-//TODO: add local storare
+
 
 // CUSTOMIZE
 const backOfCardColor = "grey";
@@ -14,7 +14,6 @@ const COLORS = [
   "darkred", "steelblue", "palevioletred", "coral", "mediumpurple", "seagreen",
   "darkred", "steelblue", "palevioletred", "coral", "mediumpurple", "seagreen",
 ];
-// const COLORS = ["green", "green", "blue", "blue"];
 
 /** Shuffle array items in-place and return shuffled array. */
 function shuffle(items) {
@@ -45,6 +44,8 @@ let guesses;
 const startBtn = document.querySelector("#start");
 startBtn.addEventListener("click", startGame);
 
+updateHighscoreBoard();
+
 function startGame() {
 
   // remove any existing games
@@ -62,7 +63,7 @@ function startGame() {
 
   //start timer
   const time = document.querySelector("#timer");
-  secs = 1;
+  secs = 0;
   time.style.display = "block";
   previousTimer = timeCounter();
 
@@ -83,8 +84,9 @@ function startGame() {
 function timeCounter() {
   const html_timer = document.querySelector("#secs");
 
-  return setInterval(function(timer){
-    timer.innerText = secs++;
+  return setInterval(function (timer) {
+    secs++;
+    timer.innerText = secs;
   }, 1000, html_timer);
 }
 
@@ -251,11 +253,12 @@ function handleWin() {
   startBtn.innerText = "Wanna play again?";
 
   // Update highscore board
+  makeNewHighscore();
   updateHighscoreBoard();
 }
 
 /* Updates score */
-function updateScore(){
+function updateScore() {
   score += scoreMove();
 
   const scoreEl = document.querySelector("#score");
@@ -308,13 +311,13 @@ function scoreMove() {
 
 //Could use Intl.NumberFormat as well
 /* Add a comma every 3 numbers backwards */
-function formatNumber(num){
+function formatNumber(num) {
   num = num.toString();
   const reversed = num.split("").reverse().join("");
 
   const groupsOf3 = [];
 
-  for(let i = 0; i < reversed.length; i += 3){
+  for (let i = 0; i < reversed.length; i += 3) {
     const group = reversed.substr(i, 3).split("").reverse().join("");
     groupsOf3.push(group);
   }
@@ -322,34 +325,41 @@ function formatNumber(num){
   return groupsOf3.reverse().join(",");
 }
 
-function updateHighscoreBoard(){
+function updateHighscoreBoard() {
+  const highscores = JSON.parse(localStorage.getItem("highscores") ?? "[]");
+
   const tbody = document.querySelector("tbody");
-  tbody.append(makeHighscore());
+  tbody.innerHTML = '';
+
+  highscores
+    .sort((a, b) => b.score - a.score)
+    .forEach(({name, score, date}) => {
+      const tr = document.createElement("tr");
+
+      tr.append(makeEl("td", name));
+      tr.append(makeEl("td", formatNumber(score)));
+      tr.append(makeEl("td", new Date(date).toDateString()));
+
+      tbody.append(tr);
+    });
 }
 
-/* Return table row with name, score, and date data */
-function makeHighscore() {
+/* Set new highscore into storage */
+function makeNewHighscore() {
 
   const name = "You";
   let date = new Date();
 
-  const dataSet = {name, score, date};
+  const dataSet = { name, score, date };
 
   // Local Storage
-  const highscores = JSON.parse(localStorage.getItem("highscores")?? "[]");
-
+  const highscores = JSON.parse(localStorage.getItem("highscores") ?? "[]");
+  highscores.push(dataSet);
   localStorage.setItem("highscores", JSON.stringify(highscores));
 
-  const tr = document.createElement("tr");
-
-  tr.append(makeEl("td", name));
-  tr.append(makeEl("td", formatNumber(score)));
-  tr.append(makeEl("td", date.toDateString()));
-
-  return tr;
 }
 
-function makeEl(el, innerText){
+function makeEl(el, innerText) {
   let element = document.createElement(el);
   element.innerText = innerText;
 

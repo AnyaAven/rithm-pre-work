@@ -154,7 +154,7 @@ button#start {
     border-radius: 8px;
   }
 
-  & tbody {
+  & tr {
     background-color: var(--darkGreen);
 
   }
