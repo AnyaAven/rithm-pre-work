@@ -2,7 +2,6 @@
 
 /** Memory game: find matching pairs of cards and flip both of them. */
 //TODO: add local storare
-//TODO: Add instructions?
 
 // CUSTOMIZE
 const backOfCardColor = "grey";
@@ -11,11 +10,11 @@ const FOUND_CARDS_WAIT_MSECS = 1000;
 //Amount of time to flip the cards
 const FLIP_TIME_MSECS = 500;
 
-// const COLORS = [
-//   "red", "blue", "pink", "orange", "purple", "#800000",
-//   "red", "blue", "pink", "orange", "purple", "#800000",
-// ];
-const COLORS = ["green", "green", "blue", "blue"];
+const COLORS = [
+  "darkred", "steelblue", "palevioletred", "coral", "mediumpurple", "seagreen",
+  "darkred", "steelblue", "palevioletred", "coral", "mediumpurple", "seagreen",
+];
+// const COLORS = ["green", "green", "blue", "blue"];
 
 /** Shuffle array items in-place and return shuffled array. */
 function shuffle(items) {
@@ -37,6 +36,7 @@ function shuffle(items) {
 let previousTimer;
 let colors = shuffle(COLORS);
 let secs;
+let score = 0;
 
 // Score variables
 let consecutiveMatches;
@@ -83,11 +83,9 @@ function startGame() {
 function timeCounter() {
   const html_timer = document.querySelector("#secs");
 
-  return setInterval(addSec, 1000, html_timer);
-}
-
-function addSec(timer) {
-  timer.innerText = secs++;
+  return setInterval(function(timer){
+    timer.innerText = secs++;
+  }, 1000, html_timer);
 }
 
 /** Create card for every color in colors (each will appear twice)
@@ -258,19 +256,15 @@ function handleWin() {
 
 /* Updates score */
 function updateScore(){
+  score += scoreMove();
+
   const scoreEl = document.querySelector("#score");
 
-  //Remove any existing commas during previos formats
-  const previousScore = scoreEl.innerText.replace(",", "");
-
-  const currentScore = Number(previousScore) + score();
-
-  // Update
-  scoreEl.innerText = formatNumber(currentScore);
+  scoreEl.innerText = formatNumber(score);
 }
 
 /* Calculate score */
-function score() {
+function scoreMove() {
   let score = 0;
 
   // Decreasing score, will be awarded less and less each second
@@ -312,6 +306,7 @@ function score() {
   return score;
 }
 
+//Could use Intl.NumberFormat as well
 /* Add a comma every 3 numbers backwards */
 function formatNumber(num){
   num = num.toString();
@@ -334,32 +329,29 @@ function updateHighscoreBoard(){
 
 /* Return table row with name, score, and date data */
 function makeHighscore() {
-  // SCORE
-  const score = document.querySelector("#score").innerText;
 
-  // NAME
   const name = "You";
-
-  //DATE
   let date = new Date();
-  date = date.toDateString();
 
-  const dataSet = [name, score, date];
+  const dataSet = {name, score, date};
 
+  // Local Storage
+  const highscores = JSON.parse(localStorage.getItem("highscores")?? "[]");
+
+  localStorage.setItem("highscores", JSON.stringify(highscores));
 
   const tr = document.createElement("tr");
 
-  // add data to table row
-  for(let data of dataSet){
-    tr.append(makeTableData(data));
-  }
+  tr.append(makeEl("td", name));
+  tr.append(makeEl("td", formatNumber(score)));
+  tr.append(makeEl("td", date.toDateString()));
 
   return tr;
 }
 
-function makeTableData(data){
-  const td = document.createElement("td");
-  td.innerText = data;
+function makeEl(el, innerText){
+  let element = document.createElement(el);
+  element.innerText = innerText;
 
-  return td;
+  return element;
 }
